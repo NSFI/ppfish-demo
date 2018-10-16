@@ -1,0 +1,86 @@
+
+.standardList {
+  :global {
+    .ant-card-head {
+      border-bottom: none;
+    }
+    .ant-card-head-title {
+      line-height: 32px;
+      padding: 24px 0;
+    }
+    .ant-card-extra {
+      padding: 24px 0;
+    }
+    .ant-list-pagination {
+      text-align: right;
+      margin-top: 24px;
+    }
+    .ant-avatar-lg {
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+    }
+  }
+  .headerInfo {
+    position: relative;
+    text-align: center;
+    & > span {
+      display: inline-block;
+      line-height: 22px;
+      margin-bottom: 4px;
+    }
+    & > p {
+      font-size: 24px;
+      line-height: 32px;
+      margin: 0;
+    }
+    & > em {
+      position: absolute;
+      height: 56px;
+      width: 1px;
+      top: 0;
+      right: 0;
+    }
+  }
+  .listContent {
+    font-size: 0;
+    .listContentItem {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 40px;
+      > span {
+        line-height: 20px;
+      }
+      > p {
+        margin-top: 4px;
+        margin-bottom: 0;
+        line-height: 22px;
+      }
+    }
+  }
+  .extraContentSearch {
+    margin-left: 16px;
+    width: 272px;
+  }
+}
+
+
+
+.standardListForm {
+  :global {
+    .ant-form-item {
+      margin-bottom: 12px;
+      &:last-child {
+        padding-top: 4px;
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
+
+.formResult {
+  width: 100%;
+  [class^='title'] {
+    margin-bottom: 8px;
+  }
+}
