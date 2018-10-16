@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Route, Link } from 'react-router-dom';
-import { Router, hashHistory } from 'react-router';
 import { Layout, Menu, Icon } from 'ppfish';
 import Dashboard from './page/dashboard/Dashborad.js';
 import DetailPage from './page/detailPage/routes.js';
 import FormPage from './page/formPage/routes.js';
 import ListPage from './page/listPage/routes.js';
 import './App.css'
-
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
-
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       collapsed: false
     }
   }
-
   toggle = () => {
     this.setState({
-        collapsed: !this.state.collapsed,
+      collapsed: !this.state.collapsed,
     });
   }
-
+  setDefault = () => {
+    const { pathname } = this.props.location;
+    const pathList = pathname.split('/');
+    return {
+      subDefault: pathList[1],
+      opnDefault: pathList[2]
+    }
+  }
   render() {
+    const { subDefault, opnDefault } = this.setDefault();
     return (
       <Layout>
         <Sider
@@ -36,7 +38,7 @@ class App extends Component {
           collapsed={this.state.collapsed}
         >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[subDefault+'-'+opnDefault]}  defaultOpenKeys={[subDefault]} className="demo-menu">
             <SubMenu key="sub1" title={<span><Icon type="demo-play" />首页</span>}>
               <Menu.Item key="1">
                 <Icon type="demo-play" />
@@ -45,7 +47,7 @@ class App extends Component {
                 </span>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="demo-play" />表单页</span>}>
+            <SubMenu key="formPage" title={<span><Icon type="demo-play" />表单页</span>}>
               <Menu.Item key="formPage-basic">
                 <Icon type="demo-play" />
                 <span>
@@ -58,14 +60,14 @@ class App extends Component {
                   <Link to="/formPage/advanced">高级表单</Link>
                 </span>
               </Menu.Item>
-              <Menu.Item key="formPage-step-step1">
+              <Menu.Item key="formPage-step">
                 <Icon type="demo-play" />
                 <span>
                   <Link to="/formPage/step/step1">分布表单</Link>
                 </span>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="demo-play" />列表页</span>}>
+            <SubMenu key="listPage" title={<span><Icon type="demo-play" />列表页</span>}>
               <Menu.Item key="listPage-basic">
                 <Icon type="demo-play" />
                 <span>
@@ -88,10 +90,10 @@ class App extends Component {
                 <Icon type="demo-play" />
                 <span>
                   <Link to="/listPage/table">表格列表</Link>
-                </span>
+                </span>s
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub4" title={<span><Icon type="demo-play" />详情页</span>}>
+            <SubMenu key="detailPage" title={<span><Icon type="demo-play" />详情页</span>}>
               <Menu.Item key="detailPage-basic">
                 <Icon type="demo-play" />
                 <span>
@@ -104,7 +106,7 @@ class App extends Component {
                   <Link to="/detailPage/advanced">高级详情</Link>
                 </span>
               </Menu.Item>
-              
+
             </SubMenu>
           </Menu>
         </Sider>
@@ -118,14 +120,10 @@ class App extends Component {
           </Header>
           <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
             <div>
-            <Route exact path="/" component={Dashboard}/>
-                <FormPage/>
-                <ListPage/>
-                <DetailPage/>
-              {/* <Route exact path="/" component={Dashboard}/>
-              <Route exact path="/form" component={FormPage}/>
-              <Route path="/listPage" component={ListPage}/>
-              <Route path="/detail" component={DetailPage}/> */}
+              <Route exact path="/" component={Dashboard} />
+              <FormPage />
+              <ListPage />
+              <DetailPage />
             </div>
           </Content>
         </Layout>

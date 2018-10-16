@@ -8,7 +8,15 @@
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
 }
-
+.logo {
+  height: 30px;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 15px;
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-image: url("https://ysf.nosdn.127.net/unanqvsjrxhnpwqrulcuumqxicpwsojh");
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -37,6 +45,12 @@
   height: 100%;
 }
 
-.fishd-menu-item-selected > span > a{
+ 
+.demo-menu .fishd-menu-item-selected > span > a {
   color: #fff!important;
+}
+.demo-menu .fishd-menu-item > span > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
