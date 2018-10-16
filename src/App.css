@@ -30,3 +30,7 @@
     transform: rotate(360deg);
   }
 }
+
+.fishd-layout-has-sider {
+  height: 100%;
+}
