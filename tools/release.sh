@@ -16,7 +16,7 @@ git clone -b gh-pages --depth 1 $ORIGIN site
 # remove all existed files in the repo, run the site build script
 cd site
 rm -rf *
-npm run build:site
+npm run build
 
 # commit and push to gh-pages
 git add . -A
