@@ -156,12 +156,13 @@ class App extends Component {
           </Menu>
         </Sider>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }}>
+          <Header style={{ background: '#fff', padding: 0 }} className="demo-header">
             <Icon
               className="trigger"
               type={this.state.collapsed ? 'demo-play' : 'demo-play'}
               onClick={this.toggle}
             />
+            <div className="demo-setting">setting</div>
           </Header>
           <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
             <div>

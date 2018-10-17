@@ -28,6 +28,16 @@
   color: white;
 }
 
+.demo-header{
+  display: flex;
+  justify-content: space-between;
+}
+.trigger {
+  margin-top: 25px;
+}
+.demo-setting {
+  margin-right: 10px;
+}
 .App-link {
   color: #61dafb;
 }
