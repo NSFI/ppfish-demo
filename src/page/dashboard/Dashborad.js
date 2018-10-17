@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import {Card} from 'ppfish';
 class Dashboard extends Component {
 
   render() {
     return (
       <div>
-        <h3>首页</h3>
+        
       </div>
     );
   }

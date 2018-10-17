@@ -10,7 +10,7 @@
 }
 .logo {
   height: 30px;
-  width: 80%;
+  width: 70%;
   margin-left: 20px;
   margin-top: 15px;
   background-size: 100px;
@@ -34,6 +34,9 @@
 }
 .trigger {
   margin-top: 25px;
+  margin-left: 20px;
+  font-size: 24px;
+  cursor: pointer;
 }
 .demo-setting {
   margin-right: 10px;
@@ -57,6 +60,9 @@
 
  
 .demo-menu .fishd-menu-item-selected > span > a {
+  color: #fff!important;
+}
+.demo-menu a {
   color: #fff!important;
 }
 .demo-menu .fishd-menu-item > span > a {
