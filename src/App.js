@@ -11,9 +11,12 @@ const { SubMenu } = Menu;
 class App extends Component {
   constructor(props) {
     super(props);
+    this.onOff = true;
     this.state = {
-      collapsed: false
+      collapsed: false,
+      openKeys: []
     }
+    this.rootSubmenuKeys = ['homePage', 'formPage', 'listPage', 'detailPage'];
   }
   toggle = () => {
     this.setState({
@@ -23,13 +26,29 @@ class App extends Component {
   setDefault = () => {
     const { pathname } = this.props.location;
     const pathList = pathname.split('/');
+    if (this.onOff) {
+      this.state.openKeys = [pathList[1]];
+      this.onOff = false;
+    }
     return {
       subDefault: pathList[1],
       opnDefault: pathList[2]
     }
   }
+  onOpenChange = (openKeys) => {
+    const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
+    if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      this.setState({ openKeys });
+    } else {
+      this.setState({
+        openKeys: latestOpenKey ? [latestOpenKey] : [],
+      });
+    }
+  }
   render() {
     const { subDefault, opnDefault } = this.setDefault();
+    const { collapsed } = this.state;
+    const defaultPros = !collapsed ? { openKeys: this.state.openKeys } : {};
     return (
       <Layout>
         <Sider
@@ -38,8 +57,20 @@ class App extends Component {
           collapsed={this.state.collapsed}
         >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[subDefault+'-'+opnDefault]}  defaultOpenKeys={[subDefault]} className="demo-menu">
-            <SubMenu key="sub1" title={<span><Icon type="demo-play" />首页</span>}>
+          <Menu
+            className="demo-menu"
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={[subDefault + '-' + opnDefault]}
+            defaultOpenKeys={[subDefault]}
+            onOpenChange={this.onOpenChange}
+            {...defaultPros}
+          >
+            <SubMenu key="homePage" title={<span><Icon type="demo-play" />
+              {
+                !collapsed ? '首页' : null
+              }
+            </span>}>
               <Menu.Item key="1">
                 <Icon type="demo-play" />
                 <span>
@@ -47,7 +78,11 @@ class App extends Component {
                 </span>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="formPage" title={<span><Icon type="demo-play" />表单页</span>}>
+            <SubMenu key="formPage" title={<span><Icon type="demo-play" />
+              {
+                !collapsed ? '表单页' : null
+              }
+            </span>}>
               <Menu.Item key="formPage-basic">
                 <Icon type="demo-play" />
                 <span>
@@ -67,11 +102,17 @@ class App extends Component {
                 </span>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="listPage" title={<span><Icon type="demo-play" />列表页</span>}>
+            <SubMenu key="listPage" title={<span><Icon type="demo-play" />
+              {
+                !collapsed ? '列表页' : null
+              }
+            </span>}>
               <Menu.Item key="listPage-basic">
                 <Icon type="demo-play" />
                 <span>
-                  <Link to="/listPage/basic">基础列表</Link>
+                  <Link to="/listPage/basic">
+                    基础列表
+                  </Link>
                 </span>
               </Menu.Item>
               <Menu.Item key="listPage-card">
@@ -93,7 +134,11 @@ class App extends Component {
                 </span>s
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="detailPage" title={<span><Icon type="demo-play" />详情页</span>}>
+            <SubMenu key="detailPage" title={<span><Icon type="demo-play" />
+              {
+                !collapsed ? '详情页' : null
+              }
+            </span>}>
               <Menu.Item key="detailPage-basic">
                 <Icon type="demo-play" />
                 <span>
@@ -114,7 +159,7 @@ class App extends Component {
           <Header style={{ background: '#fff', padding: 0 }}>
             <Icon
               className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              type={this.state.collapsed ? 'demo-play' : 'demo-play'}
               onClick={this.toggle}
             />
           </Header>
