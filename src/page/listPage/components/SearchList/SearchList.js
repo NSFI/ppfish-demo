@@ -112,8 +112,9 @@ class SearchList extends Component {
                     })(
                       <Select
                         mode="multiple"
-                        style={{ maxWidth: 286, width: '100%' }}
+                        style={{ maxWidth: 300, width: '190px' }}
                         placeholder="选择 owner"
+                        className="demo-search-list"
                       >
                         {owners.map(owner => (
                           <Option key={owner.id} value={owner.id}>
