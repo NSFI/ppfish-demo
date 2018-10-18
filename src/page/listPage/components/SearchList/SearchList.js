@@ -30,7 +30,7 @@ class SearchList extends Component {
       title: 'React',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
-      avatar: '../../../../../assets/img/FD-Logo.png',
+      avatar: require('../../../../../assets/img/FD-Logo.png'),
       owner: '甲',
     },{
       id: 'Angular',
@@ -41,7 +41,7 @@ class SearchList extends Component {
       title: 'Angular',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
-      avatar: '../../../../../assets/img/FD-Logo.png',
+      avatar: require('../../../../../assets/img/FD-Logo.png'),
       owner: '乙',
     },{
       id: 'Vue',
@@ -52,7 +52,7 @@ class SearchList extends Component {
       title: 'Vue',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
-      avatar: '../../../../../assets/img/FD-Logo.png',
+      avatar: require('../../../../../assets/img/FD-Logo.png'),
       owner: '丙',
     },{
       id: 'Fish Design',
@@ -63,7 +63,7 @@ class SearchList extends Component {
       title: 'Fish Design',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
-      avatar: '../../../../../assets/img/FD-Logo.png',
+      avatar: require('../../../../../assets/img/FD-Logo.png'),
       owner: '丁',
     },];
     const owners = [];

@@ -92,7 +92,7 @@ class BasicList extends Component {
       ? { footer: null, onCancel: this.handleDone }
       : { okText: '保存', onOk: this.handleSubmit, onCancel: this.handleCancel };
     const list = [{
-      logo: '../../../../../assets/img/FD-Logo.png',
+      logo: require('../../../../../assets/img/FD-Logo.png'),
       title: 'Angular',
       subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
       owner: '甲',
@@ -100,7 +100,7 @@ class BasicList extends Component {
       percent: 50,
       status: 'success'
     },{
-      logo: '../../../../../assets/img/FD-Logo.png',
+      logo: require('../../../../../assets/img/FD-Logo.png'),
       title: 'React',
       subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
       owner: '乙',
@@ -108,7 +108,7 @@ class BasicList extends Component {
       percent: 50,
       status: 'success'
     },{
-      logo: '../../../../../assets/img/FD-Logo.png',
+      logo: require('../../../../../assets/img/FD-Logo.png'),
       title: 'Vue',
       subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
       owner: '丙',
@@ -116,7 +116,7 @@ class BasicList extends Component {
       percent: 50,
       status: 'success'
     },{
-      logo: '../../../../../assets/img/FD-Logo.png',
+      logo: require('../../../../../assets/img/FD-Logo.png'),
       title: 'Fish Design',
       subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
       owner: '丁',

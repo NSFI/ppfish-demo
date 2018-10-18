@@ -8,42 +8,42 @@ class CardList extends Component {
   render(){
     const list = [{
       id:'1',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'React',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'2',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Vue',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'3',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Angular',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'4',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Fish Design',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'5',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Fish Design',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'6',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Fish Design',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'7',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Fish Design',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },{
       id:'8',
-      avatar:'../../../../../assets/img/FD-Logo.png',
+      avatar:require('../../../../../assets/img/FD-Logo.png'),
       title:'Fish Design',
       description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
     },];
