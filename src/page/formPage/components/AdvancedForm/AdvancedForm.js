@@ -136,141 +136,150 @@ class App extends Component {
       </Select>
     );
     return (
-      <div className="g-advanced">
-        <Card title="仓库管理" bordered={false}>
-          <Form layout="vertical" hideRequiredMark>
-            <Row gutter={16}>
-              <Col lg={6} md={12} sm={24}>
-                <Form.Item label={"仓库名称"}>
-                  {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入仓库名称' }],
-                  })(
-                    <Input placeholder="请输入仓库名称" />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
-                <Form.Item label={"地址"}>
-                  {getFieldDecorator('url', {
-                    rules: [{ required: true, message: '请选择' }],
-                  })(
-                    <Input
-                      style={{ width: '100%' }}
-                      addonBefore="http://"
-                      addonAfter=".com"
-                      placeholder="请输入"
-                    />
-                  )}
-                </Form.Item>
-              </Col>
-              <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
-                <Form.Item label={"管理员"}>
-                  {getFieldDecorator('owner', {
-                    rules: [{ required: true, message: '请选择管理员' }],
-                  })(
-                    <Select placeholder="请选择管理员">
-                      <Option value="xiao">付晓晓</Option>
-                      <Option value="mao">周毛毛</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col lg={6} md={12} sm={24}>
-                <Form.Item label={"审批员"}>
-                  {getFieldDecorator('approver', {
-                    rules: [{ required: true, message: '请选择审批员' }],
-                  })(
-                    <Select placeholder="请选择审批员">
-                      <Option value="xiao">付晓晓</Option>
-                      <Option value="mao">周毛毛</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
-              <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
-                <Form.Item label={"仓库类型"}>
-                  {getFieldDecorator('type', {
-                    rules: [{ required: true, message: '请选择仓库类型' }],
-                  })(
-                    <Select placeholder="请选择仓库类型">
-                      <Option value="private">私密</Option>
-                      <Option value="public">公开</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Card>
-        <Card title="任务管理" bordered={false} style={{ marginTop: 24 }}>
-          <Form layout="vertical" hideRequiredMark>
-            <Row gutter={16}>
-              <Col lg={6} md={12} sm={24}>
-                <Form.Item label={fieldLabels.name2}>
-                  {getFieldDecorator('name2', {
-                    rules: [{ required: true, message: '请输入' }],
-                  })(<Input placeholder="请输入" />)}
-                </Form.Item>
-              </Col>
-              <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
-                <Form.Item label={fieldLabels.url2}>
-                  {getFieldDecorator('url2', {
-                    rules: [{ required: true, message: '请选择' }],
-                  })(<Input placeholder="请输入" />)}
-                </Form.Item>
-              </Col>
-              <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
-                <Form.Item label={fieldLabels.owner2}>
-                  {getFieldDecorator('owner2', {
-                    rules: [{ required: true, message: '请选择管理员' }],
-                  })(
-                    <Select placeholder="请选择管理员">
-                      <Option value="xiao">付晓晓</Option>
-                      <Option value="mao">周毛毛</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col lg={6} md={12} sm={24}>
-                <Form.Item label={fieldLabels.approver2}>
-                  {getFieldDecorator('approver2', {
-                    rules: [{ required: true, message: '请选择审批员' }],
-                  })(
-                    <Select placeholder="请选择审批员">
-                      <Option value="xiao">付晓晓</Option>
-                      <Option value="mao">周毛毛</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
-              <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
-                <Form.Item label={fieldLabels.type2}>
-                  {getFieldDecorator('type2', {
-                    rules: [{ required: true, message: '请选择仓库类型' }],
-                  })(
-                    <Select placeholder="请选择仓库类型">
-                      <Option value="private">私密</Option>
-                      <Option value="public">公开</Option>
-                    </Select>
-                  )}
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </Card>
-        <Card title="成员管理" bordered={false} style={{ marginTop: 24 }}>
-          {getFieldDecorator('members', {
-            initialValue: tableData,
-          })(<TableForm />)}
-        </Card>
-        <Button type="primary" style={{ float: "right", marginTop: 20 }} onClick={this.validate}>
-          提交
+      <div className="g-form">
+        <div className="u-form-hd">
+          <div className="form-hd-left">
+            <h3 className="form-hd-title">高级表单</h3>
+          </div>
+          <div className="form-hd-right"></div>
+        </div>
+        <div className="u-form-content">
+          <Card title="仓库管理" bordered={false}>
+            <Form layout="vertical" hideRequiredMark>
+              <Row gutter={16}>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item label={"仓库名称"}>
+                    {getFieldDecorator('name', {
+                      rules: [{ required: true, message: '请输入仓库名称' }],
+                    })(
+                      <Input placeholder="请输入仓库名称" />
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
+                  <Form.Item label={"地址"}>
+                    {getFieldDecorator('url', {
+                      rules: [{ required: true, message: '请选择' }],
+                    })(
+                      <Input
+                        style={{ width: '100%' }}
+                        addonBefore="http://"
+                        addonAfter=".com"
+                        placeholder="请输入"
+                      />
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
+                  <Form.Item label={"管理员"}>
+                    {getFieldDecorator('owner', {
+                      rules: [{ required: true, message: '请选择管理员' }],
+                    })(
+                      <Select placeholder="请选择管理员">
+                        <Option value="xiao">付晓晓</Option>
+                        <Option value="mao">周毛毛</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row gutter={16}>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item label={"审批员"}>
+                    {getFieldDecorator('approver', {
+                      rules: [{ required: true, message: '请选择审批员' }],
+                    })(
+                      <Select placeholder="请选择审批员">
+                        <Option value="xiao">付晓晓</Option>
+                        <Option value="mao">周毛毛</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
+                  <Form.Item label={"仓库类型"}>
+                    {getFieldDecorator('type', {
+                      rules: [{ required: true, message: '请选择仓库类型' }],
+                    })(
+                      <Select placeholder="请选择仓库类型">
+                        <Option value="private">私密</Option>
+                        <Option value="public">公开</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
+          </Card>
+          <Card title="任务管理" bordered={false} style={{ marginTop: 24 }}>
+            <Form layout="vertical" hideRequiredMark>
+              <Row gutter={16}>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item label={fieldLabels.name2}>
+                    {getFieldDecorator('name2', {
+                      rules: [{ required: true, message: '请输入' }],
+                    })(<Input placeholder="请输入" />)}
+                  </Form.Item>
+                </Col>
+                <Col xl={{ span: 6, offset: 2 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
+                  <Form.Item label={fieldLabels.url2}>
+                    {getFieldDecorator('url2', {
+                      rules: [{ required: true, message: '请选择' }],
+                    })(<Input placeholder="请输入" />)}
+                  </Form.Item>
+                </Col>
+                <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
+                  <Form.Item label={fieldLabels.owner2}>
+                    {getFieldDecorator('owner2', {
+                      rules: [{ required: true, message: '请选择管理员' }],
+                    })(
+                      <Select placeholder="请选择管理员">
+                        <Option value="xiao">付晓晓</Option>
+                        <Option value="mao">周毛毛</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row gutter={16}>
+                <Col lg={6} md={12} sm={24}>
+                  <Form.Item label={fieldLabels.approver2}>
+                    {getFieldDecorator('approver2', {
+                      rules: [{ required: true, message: '请选择审批员' }],
+                    })(
+                      <Select placeholder="请选择审批员">
+                        <Option value="xiao">付晓晓</Option>
+                        <Option value="mao">周毛毛</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+                <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
+                  <Form.Item label={fieldLabels.type2}>
+                    {getFieldDecorator('type2', {
+                      rules: [{ required: true, message: '请选择仓库类型' }],
+                    })(
+                      <Select placeholder="请选择仓库类型">
+                        <Option value="private">私密</Option>
+                        <Option value="public">公开</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
+          </Card>
+          <Card title="成员管理" bordered={false} style={{ marginTop: 24 }}>
+            {getFieldDecorator('members', {
+              initialValue: tableData,
+            })(<TableForm />)}
+          </Card>
+          <Button type="primary" style={{ float: "right", marginTop: 20 }} onClick={this.validate}>
+            提交
           </Button>
+        </div>
       </div>
+
     );
   }
 }

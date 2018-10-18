@@ -8,9 +8,45 @@ class CardList extends Component {
   render(){
     const list = [{
       id:'1',
-      avatar:'https://ysf.nosdn.127.net/unanqvsjrxhnpwqrulcuumqxicpwsojh',
-      title:'111'
-    }];
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'React',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'2',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Vue',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'3',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Angular',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'4',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Fish Design',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'5',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Fish Design',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'6',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Fish Design',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'7',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Fish Design',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },{
+      id:'8',
+      avatar:'../../../../../assets/img/FD-Logo.png',
+      title:'Fish Design',
+      description:'在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+    },];
     return(
       <div>
        <div className="cardList">
@@ -26,7 +62,7 @@ class CardList extends Component {
                       avatar={<img alt="" className="cardAvatar" src={item.avatar} />}
                       title={<a>{item.title}</a>}
                       description={
-                        <div className="item">"aa"</div>
+                        <div className="item">{item.description}</div>
                         
                         // <Ellipsis className="item" lines={3}>
                         //   {item.description}

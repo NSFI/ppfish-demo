@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './DetailPage.less';
+import './Title.less';
 
 
 class App extends Component {
@@ -12,16 +12,15 @@ class App extends Component {
     }];
   }
   handleChangeTitle = () => {
-    const { location } = this.props;
+    const { location,basicList } = this.props;
     const { pathname } = location;
     const pathList = pathname.split('/');
-    const list = [{ conditions: 'basic', result: '基础详情页' }, { conditions: 'advanced', result: '高级详情页' }];
-    for (let i = 0; i < list.length; i++) {
-      if (pathList[pathList.length - 1] === list[i].conditions) {
-        return list[i].result;
+    for (let i = 0; i < basicList.length; i++) {
+      if (pathList[pathList.length - 1] === basicList[i].conditions) {
+        return basicList[i].result;
       }
     }
-    return list[i].result;
+    return basicList[0].result;
   }
   render() {
     return (

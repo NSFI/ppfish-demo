@@ -9,13 +9,22 @@
   height: 40vmin;
 }
 .logo {
+  display: inline-block;
   height: 30px;
-  width: 70%;
-  margin-left: 20px;
+  width: 30px;
+  margin-left: 30px;
   margin-top: 15px;
-  background-size: 100px;
+  background-size: 30px;
   background-repeat: no-repeat;
-  background-image: url("https://ysf.nosdn.127.net/unanqvsjrxhnpwqrulcuumqxicpwsojh");
+  background-image: url("../assets/img/FD-Logo.png");
+}
+.logo-text {
+  position: relative;
+  top: -8px;
+  left: 5px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
 }
 .App-header {
   background-color: #282c34;

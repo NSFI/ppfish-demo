@@ -172,32 +172,6 @@ class AdvancedDetail extends Component {
         key: 'memo',
       },
     ];
-    // const contentList = {
-    //   tab1: (
-    //     <Table
-    //       pagination={false}
-    //       loading={loading}
-    //       dataSource={advancedOperation1}
-    //       columns={columns1}
-    //     />
-    //   ),
-    //   tab2: (
-    //     <Table
-    //       pagination={false}
-    //       loading={loading}
-    //       dataSource={advancedOperation2}
-    //       columns={columns1}
-    //     />
-    //   ),
-    //   tab3: (
-    //     <Table
-    //       pagination={false}
-    //       loading={loading}
-    //       dataSource={advancedOperation3}
-    //       columns={columns1}
-    //     />
-    //   ),
-    // };
     return (
       <Fragment>
         <Card title="流程进度" style={{ marginBottom: 24 }} bordered={false}>

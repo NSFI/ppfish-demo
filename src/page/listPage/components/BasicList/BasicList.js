@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
+import moment from 'moment';
 import {
   List,
   Card,
@@ -11,7 +12,12 @@ import {
   Avatar,
   Modal,
   Form,
-  Select
+  Select,
+  DatePicker,
+  Dropdown,
+  Progress,
+  Menu,
+  Icon
 } from 'ppfish';
 import './BasicList.less';
 
@@ -67,10 +73,7 @@ class BasicList extends Component {
       this.setState({
         done: true,
       });
-      dispatch({
-        type: 'list/submit',
-        payload: { id, ...fieldsValue },
-      });
+
     });
   };
   deleteItem = id => {
@@ -80,6 +83,7 @@ class BasicList extends Component {
       payload: { id },
     });
   };
+
   render() {
     const { form } = this.props;
     const { getFieldDecorator, validateFields } = form;
@@ -87,7 +91,57 @@ class BasicList extends Component {
     const modalFooter = done
       ? { footer: null, onCancel: this.handleDone }
       : { okText: '保存', onOk: this.handleSubmit, onCancel: this.handleCancel };
-    const list = [];
+    const list = [{
+      logo: '../../../../../assets/img/FD-Logo.png',
+      title: 'Angular',
+      subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
+      owner: '甲',
+      createdAt: 0,
+      percent: 50,
+      status: 'success'
+    },{
+      logo: '../../../../../assets/img/FD-Logo.png',
+      title: 'React',
+      subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
+      owner: '乙',
+      createdAt: 0,
+      percent: 50,
+      status: 'success'
+    },{
+      logo: '../../../../../assets/img/FD-Logo.png',
+      title: 'Vue',
+      subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
+      owner: '丙',
+      createdAt: 0,
+      percent: 50,
+      status: 'success'
+    },{
+      logo: '../../../../../assets/img/FD-Logo.png',
+      title: 'Fish Design',
+      subDescription: '那是一种内在的东西， 他们到达不了，也无法触及的',
+      owner: '丁',
+      createdAt: 0,
+      percent: 50,
+      status: 'success'
+    },];
+    const ListContent = ({ data: { owner, createdAt, percent, status } }) => {
+      return (
+        <div className="listContent">
+          <div className="listContentItem">
+            <span>Owner</span>
+            <p>{owner}</p>
+          </div>
+          <div className="listContentItem">
+            <span>开始时间</span>
+            <p>{moment(createdAt).format('YYYY-MM-DD HH:mm')}</p>
+          </div>
+          <div className="listContentItem">
+            <Progress percent={percent} status={status} strokeWidth={6} style={{ width: 180 }} />
+          </div>
+        </div>
+      )
+    };
+
     const extraContent = (
       <div className="extraContent">
         <RadioGroup defaultValue="all">
@@ -98,23 +152,66 @@ class BasicList extends Component {
         <Search className="extraContentSearch" placeholder="请输入" onSearch={() => ({})} />
       </div>
     );
+    const MoreBtn = props => (
+      <Dropdown
+        overlay={
+          <Menu onClick={({ key }) => editAndDelete(key, props.current)}>
+            <Menu.Item key="edit">编辑</Menu.Item>
+            <Menu.Item key="delete">删除</Menu.Item>
+          </Menu>
+        }
+      >
+        <a>
+          更多 <Icon type="down" />
+        </a>
+      </Dropdown>
+    );
+
     const getModalContent = () => {
       if (done) {
-        return (
-          <Result
-            type="success"
-            title="操作成功"
-            description="一系列的信息描述，很短同样也可以带标点。"
-            actions={
-              <Button type="primary" onClick={this.handleDone}>
-                知道了
-              </Button>
-            }
-            className="formResult"
-          />
-        );
+        this.handleDone();
       }
-    }
+      return (
+        <Form onSubmit={this.handleSubmit}>
+          <FormItem label="任务名称" {...this.formLayout}>
+            {getFieldDecorator('title', {
+              rules: [{ required: true, message: '请输入任务名称' }],
+              initialValue: current.title,
+            })(<Input placeholder="请输入" />)}
+          </FormItem>
+          <FormItem label="开始时间" {...this.formLayout}>
+            {getFieldDecorator('createdAt', {
+              rules: [{ required: true, message: '请选择开始时间' }],
+              initialValue: current.createdAt ? moment(current.createdAt) : null,
+            })(
+              <DatePicker
+                showTime
+                placeholder="请选择"
+                format="YYYY-MM-DD HH:mm:ss"
+                style={{ width: '100%' }}
+              />
+            )}
+          </FormItem>
+          <FormItem label="任务负责人" {...this.formLayout}>
+            {getFieldDecorator('owner', {
+              rules: [{ required: true, message: '请选择任务负责人' }],
+              initialValue: current.owner,
+            })(
+              <Select placeholder="请选择">
+                <SelectOption value="付晓晓">付晓晓</SelectOption>
+                <SelectOption value="周毛毛">周毛毛</SelectOption>
+              </Select>
+            )}
+          </FormItem>
+          <FormItem {...this.formLayout} label="产品描述">
+            {getFieldDecorator('subDescription', {
+              rules: [{ message: '请输入至少五个字符的产品描述！', min: 5 }],
+              initialValue: current.subDescription,
+            })(<TextArea rows={4} placeholder="请输入至少五个字符" />)}
+          </FormItem>
+        </Form>
+      );
+    };
     const paginationProps = {
       showSizeChanger: true,
       showQuickJumper: true,

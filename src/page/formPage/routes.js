@@ -7,8 +7,6 @@ import Step1 from './components/StepForm/Step1';
 import Step2 from './components/StepForm/Step2';
 import Step3 from './components/StepForm/Step3';
 
-
-
 class App extends Component {
   constructor(props) {
     super(props);

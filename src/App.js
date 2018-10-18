@@ -56,7 +56,13 @@ class App extends Component {
           collapsible
           collapsed={this.state.collapsed}
         >
-          <div className="logo" />
+          <i className="logo" />
+          {
+            !collapsed
+            ?
+            <span className="logo-text">Fish Design</span>
+            :null
+          }
           <Menu
             className="demo-menu"
             theme="dark"

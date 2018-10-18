@@ -21,22 +21,52 @@ class SearchList extends Component {
         md: { span: 12 },
       },
     };
-    const list=[{
-      id:'1',
-      star:'22',
-      like:'33',
-      message:'44',
-      href:'https://www.baidu.com',
-      title:'aaaabbbccc',
-      data:{
-        content:'aa',
-        updatedAt:0,
-        avatar:'aa',
-        owner:'zzzzzaaaa',
-        href:'https://www.baidu.com'
-      }
-    }];
-    const owners=[];
+    const list = [{
+      id: 'React',
+      star: '设计语言',
+      like: '云商服',
+      message: '44',
+      href: 'https://www.baidu.com',
+      title: 'React',
+      content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
+      updatedAt: 0,
+      avatar: '../../../../../assets/img/FD-Logo.png',
+      owner: '甲',
+    },{
+      id: 'Angular',
+      star: '设计语言',
+      like: '云商服',
+      message: '44',
+      href: 'https://www.baidu.com',
+      title: 'Angular',
+      content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
+      updatedAt: 0,
+      avatar: '../../../../../assets/img/FD-Logo.png',
+      owner: '乙',
+    },{
+      id: 'Vue',
+      star: '设计语言',
+      like: '云商服',
+      message: '44',
+      href: 'https://www.baidu.com',
+      title: 'Vue',
+      content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
+      updatedAt: 0,
+      avatar: '../../../../../assets/img/FD-Logo.png',
+      owner: '丙',
+    },{
+      id: 'Fish Design',
+      star: '设计语言',
+      like: '云商服',
+      message: '44',
+      href: 'https://www.baidu.com',
+      title: 'Fish Design',
+      content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
+      updatedAt: 0,
+      avatar: '../../../../../assets/img/FD-Logo.png',
+      owner: '丁',
+    },];
+    const owners = [];
     const loading = false;
     const IconText = ({ type, text }) => (
       <span>
@@ -56,76 +86,76 @@ class SearchList extends Component {
       </div>
     );
     const loadMore =
-    list.length > 0 ? (
-      <div style={{ textAlign: 'center', marginTop: 16 }}>
-        <Button onClick={this.fetchMore} style={{ paddingLeft: 48, paddingRight: 48 }}>
-          {loading ? (
-            <span>
-              <Icon type="loading" /> 加载中...
+      list.length > 0 ? (
+        <div style={{ textAlign: 'center', marginTop: 16 }}>
+          <Button onClick={this.fetchMore} style={{ paddingLeft: 48, paddingRight: 48 }}>
+            {loading ? (
+              <span>
+                <Icon type="loading" /> 加载中...
             </span>
-          ) : (
-            '加载更多'
-          )}
-        </Button>
-      </div>
-    ) : null;
+            ) : (
+                '加载更多'
+              )}
+          </Button>
+        </div>
+      ) : null;
     return (
       <Fragment>
         <Card bordered={false}>
           <Form layout="inline">
-          <StandardFormRow title="owner" grid>
-            <Row>
-              <Col lg={16} md={24} sm={24} xs={24}>
-                <FormItem>
-                  {getFieldDecorator('owner', {
-                    initialValue: ['wjh', 'zxx'],
-                  })(
-                    <Select
-                      mode="multiple"
-                      style={{ maxWidth: 286, width: '100%' }}
-                      placeholder="选择 owner"
-                    >
-                      {owners.map(owner => (
-                        <Option key={owner.id} value={owner.id}>
-                          {owner.name}
-                        </Option>
-                      ))}
-                    </Select>
-                  )}
-                  <a className="selfTrigger" onClick={this.setOwner}>
-                    只看自己的
+            <StandardFormRow title="owner" grid>
+              <Row>
+                <Col lg={16} md={24} sm={24} xs={24}>
+                  <FormItem>
+                    {getFieldDecorator('owner', {
+                      initialValue: ['wjh', 'zxx'],
+                    })(
+                      <Select
+                        mode="multiple"
+                        style={{ maxWidth: 286, width: '100%' }}
+                        placeholder="选择 owner"
+                      >
+                        {owners.map(owner => (
+                          <Option key={owner.id} value={owner.id}>
+                            {owner.name}
+                          </Option>
+                        ))}
+                      </Select>
+                    )}
+                    <a className="selfTrigger" onClick={this.setOwner}>
+                      只看自己的
                     </a>
-                </FormItem>
-              </Col>
-            </Row>
+                  </FormItem>
+                </Col>
+              </Row>
             </StandardFormRow>
             <StandardFormRow title="其它选项" grid last>
-            <Row gutter={16}>
-              <Col xl={8} lg={10} md={12} sm={24} xs={24}>
-                <FormItem {...formItemLayout} label="活跃用户">
-                  {getFieldDecorator('user', {})(
-                    <Select
-                      placeholder="不限"
-                      style={{ maxWidth: 200, width: '100%' }}
-                    >
-                      <Option value="lisa">李三</Option>
-                    </Select>
-                  )}
-                </FormItem>
-              </Col>
-              <Col xl={8} lg={10} md={12} sm={24} xs={24}>
-                <FormItem {...formItemLayout} label="好评度">
-                  {getFieldDecorator('rate', {})(
-                    <Select
-                      placeholder="不限"
-                      style={{ maxWidth: 200, width: '100%' }}
-                    >
-                      <Option value="good">优秀</Option>
-                    </Select>
-                  )}
-                </FormItem>
-              </Col>
-            </Row>
+              <Row gutter={16}>
+                <Col xl={8} lg={10} md={12} sm={24} xs={24}>
+                  <FormItem {...formItemLayout} label="活跃用户">
+                    {getFieldDecorator('user', {})(
+                      <Select
+                        placeholder="不限"
+                        style={{ maxWidth: 200, width: '100%' }}
+                      >
+                        <Option value="lisa">李三</Option>
+                      </Select>
+                    )}
+                  </FormItem>
+                </Col>
+                <Col xl={8} lg={10} md={12} sm={24} xs={24}>
+                  <FormItem {...formItemLayout} label="好评度">
+                    {getFieldDecorator('rate', {})(
+                      <Select
+                        placeholder="不限"
+                        style={{ maxWidth: 200, width: '100%' }}
+                      >
+                        <Option value="good">优秀</Option>
+                      </Select>
+                    )}
+                  </FormItem>
+                </Col>
+              </Row>
             </StandardFormRow>
           </Form>
         </Card>
@@ -135,7 +165,7 @@ class SearchList extends Component {
           bodyStyle={{ padding: '8px 32px 32px 32px' }}
         >
 
-        
+
           <List
             size="large"
             rowKey="id"
