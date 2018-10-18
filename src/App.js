@@ -163,7 +163,7 @@ class App extends Component {
             <img className="demo-avator" src={require('../assets/img/FD-Logo.png')}/>
             </div>
           </Header>
-          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+          <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280 }}>
             <div>
               <Route exact path="/homePage/home" component={Dashboard} />
               <FormPage />

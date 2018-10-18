@@ -122,7 +122,7 @@ class App extends Component {
     ));
 
     return (
-        <div className="g-form">
+        <div className="g-form" style={{padding:24}}>
         <div className="u-form-hd">
             <div className="form-hd-left">
               <h3 className="form-hd-title">基础表单</h3>

@@ -55,7 +55,7 @@ class App extends Component {
       content: 'Last-content',
     }];
     return (
-        <div className="g-form">
+        <div className="g-form" style={{padding:24}}>
           <div className="u-form-hd">
             <div className="form-hd-left">
               <h3 className="form-hd-title">分布表单</h3>

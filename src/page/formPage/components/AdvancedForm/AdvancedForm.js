@@ -104,7 +104,7 @@ class App extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className="g-form">
+      <div className="g-form" style={{padding:24}}>
         <div className="u-form-hd">
           <div className="form-hd-left">
             <h3 className="form-hd-title">高级表单</h3>

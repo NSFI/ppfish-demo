@@ -24,14 +24,14 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="g-detail">
+      <div className="g-detail" style={{padding:24}}>
         <div className="u-detail-hd">
           <div className="detail-hd-left">
             <h3 className="detail-hd-title">{this.handleChangeTitle()}</h3>
           </div>
           <div className="detail-hd-right"></div>
         </div>
-        <div className="u-detail-content">
+        <div className="u-detail-content" >
           {this.props.children}
         </div>
       </div>
