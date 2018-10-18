@@ -157,7 +157,11 @@ class App extends Component {
               type={this.state.collapsed ? 'menu-line' : 'menu-line'}
               onClick={this.toggle}
             />
-            <div className="demo-setting">setting</div>
+            <div className="demo-setting">
+            <Icon type="search-line" style={{marginRight:'10px',cursor:'pointer'}}/>
+            <Icon type="demo-phone"  style={{marginRight:'10px',cursor:'pointer'}}/>
+            <img className="demo-avator" src={require('../assets/img/FD-Logo.png')}/>
+            </div>
           </Header>
           <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
             <div>
