@@ -13,9 +13,11 @@ import {
   Badge,
   Carousel,
   BackTop,
-  Timeline
+  Timeline,
+  Collapse
 } from 'ppfish';
 const { Content, Sider } = Layout;
+const Panel = Collapse.Panel;
 import SexChart from './components/Chart/SexChart';
 import PictorialChart from './components/Chart/PictorialChart';
 import AgeChart from './components/Chart/AgeChart';
@@ -24,6 +26,9 @@ import Header from './components/Header';
 import './Dashborad.less';
 import DrawerPage from './components/DrawerPage';
 class Dashboard extends Component {
+  callback = (key) => {
+    console.log(key);
+  }
   render() {
     const topColResponsiveProps = {
       xs: 12,
@@ -300,13 +305,21 @@ class Dashboard extends Component {
       })()
     };
     const chart = {
-      age: [{ text: "19-25", value: 1989599 }],
-      career: [{ text: "白领", value: 1981216 }, { text: "金领", value: 8383 }],
+      age: [{ text: "19-25", value: 20000 }, { text: "26-30", value: 1000 }, { text: "31-35", value: 3000 }],
+      career: [{ text: "白领", value: 20000 }, { text: "金领", value: 8383 }],
       gender: [{ text: "女", value: 340572 }, { text: "男", value: 1648118 }],
-      region: [{ text: "山东", value: 85648 }, { text: "甘肃", value: 16867 }, { text: "江苏", value: 201798 }],
-      wealth: [{ text: "强", value: 1112313 }, { text: "中", value: 877286 }]
+      region: [{ text: "江苏", value: 201798 },
+      { text: "浙江", value: 180487 },
+      { text: "上海", value: 100899 },
+      { text: "广东", value: 332896 }
+      ],
+      wealth: [{ text: "强", value: 1112313 }, { text: "中", value: 877286 }, { text: "弱", value: 666666 }, { text: "微弱", value: 376666 }]
     }
-
+    const text = `
+    A dog is a type of domesticated animal.
+    Known for its loyalty and faithfulness,
+    it can be found as a welcome guest in many households across the world.
+  `;
     const data1 = [
       'Racing car sprays burning fuel into crowd.',
       'Japanese princess to wed commoner.',
@@ -337,8 +350,8 @@ class Dashboard extends Component {
     return (
       <div>
         <DrawerPage>
-        <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
-          {/* <List
+          <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
+            {/* <List
             grid={{ gutter: 16, column: 4 }}
             dataSource={source}
             renderItem={item => (
@@ -349,116 +362,121 @@ class Dashboard extends Component {
               </List.Item>
             )}
           /> */}
-          <Header />
-          <Row gutter={24} >
-            <Col span={8} >
-              <Card title={'访问年龄'} className="car-box-shadow">
-                <AgeChart data={age} seriesName={"年龄"} style={style} />
-              </Card>
-            </Col>
-            <Col span={8} >
-              <Card title={'访问性别'} className="car-box-shadow">
-                <SexChart data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
-              </Card>
-            </Col>
-            <Col span={8} >
-              <Card title={'访问职业'} className="car-box-shadow">
-                <PictorialChart data={career} style={style} />
-              </Card>
-            </Col>
-          </Row>
-          <Row gutter={24}>
-            <Col span={12}>
-                <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow">
-                      <Carousel autoplay>
-                        <div><RegionChart data={region} style={{width:'100%',height:'300px'}}/></div>
-                        <div><PictorialChart data={career} style={{width:'100%',height:'300px'}}/></div>
-                        <div><RegionChart data={wealth} style={{width:'100%',height:'300px'}}/></div>
-                      </Carousel>
-                </Card>
-            </Col>
-            <Col span={12} >
-            <Card title={'列表'} style={{ marginTop: 20 }} className="car-box-shadow">
-                <List
-                  bordered
-                  striped
-                  style={{height:300}}
-                  dataSource={data1}
-                  renderItem={item => (<List.Item>{item}</List.Item>)}
-                />
+            <Header />
+            <Row gutter={24} >
+              <Col span={8} >
+                <Card title={'访问年龄'} className="car-box-shadow">
+                  <AgeChart data={age} seriesName={"年龄"} style={style} />
                 </Card>
               </Col>
-          </Row>
-          <Card title={'访问量'} style={{ marginTop: 20 }} className="car-box-shadow">
-            <Row gutter={24}>
-              <Col span={20}>
-                <Echart
-                  className="echarts"
-                  option={option3}
-                  style={{ width: '100%', height: 500 }}
-                />
+              <Col span={8} >
+                <Card title={'访问性别'} className="car-box-shadow">
+                  <SexChart data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
+                </Card>
               </Col>
-              <Col span={4} >
-                <Card title="月访问数" bordered={false}>
-                  同上期增长
-                  <Progress percent={50} />
-                </Card>
-                <Card title="月下载数" style={{ marginTop: 10 }} bordered={false}>
-                  同上期增长
-                  <Progress percent={50} />
-                </Card>
-                <Card title="月收入" style={{ marginTop: 10 }} bordered={false}>
-                  同上期增长
-                  <Progress percent={50} />
+              <Col span={8} >
+                <Card title={'访问职业'} className="car-box-shadow">
+                  <PictorialChart data={career} style={style} />
                 </Card>
               </Col>
             </Row>
-          </Card>
-          <Row gutter={24} style={{ marginTop: 20 }}>
-            <Col {...topColResponsiveProps} >
-              <Echart
-                className="car-box-shadow"
-                option={option}
-                style={{ width: '100%', height: 500 }}
-              />
-            </Col>
-            <Col {...topColResponsiveProps}>
-              <Echart
-                className="car-box-shadow"
-                option={option2}
-                style={{ width: '100%', height: 500 }}
-              />
-            </Col>
-          </Row>
-          {/* <Chart /> */}
-          <Layout>
-            <Sider width={300} style={{ background: '#fff'}}>
-            <Card title="时间线">
-            <Timeline>
-              <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item color="red">
-                <p>Solve initial network problems 1</p>
-                <p>Solve initial network problems 2</p>
-                <p>Solve initial network problems 3 2015-09-01</p>
-              </Timeline.Item>
-              <Timeline.Item>
-                <p>Technical testing 1</p>
-                <p>Technical testing 2</p>
-                <p>Technical testing 3 2015-09-01</p>
-              </Timeline.Item>
-            </Timeline>
+            <Row gutter={24}>
+              <Col span={14}>
+                <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow">
+                  <Carousel autoplay>
+                    <div><RegionChart data={region} style={{ width: '100%', height: '280px' }} /></div>
+                    <div><PictorialChart data={career} style={{ width: '100%', height: '280px' }} /></div>
+                    <div><RegionChart data={wealth} style={{ width: '100%', height: '280px' }} /></div>
+                  </Carousel>
+                </Card>
+              </Col>
+              <Col span={10} >
+                <Card title={'列表'} style={{ marginTop: 20 }} className="car-box-shadow">
+                  <div style={{height:'280px'}}>
+                  <Collapse accordion defaultActiveKey={['1']}>
+                    <Panel header="This is panel header 1" key="1">
+                      <p>{text}</p>
+                    </Panel>
+                    <Panel header="This is panel header 2" key="2">
+                      <p>{text}</p>
+                    </Panel>
+                    <Panel header="This is panel header 3" key="3">
+                      <p>{text}</p>
+                    </Panel>
+                  </Collapse>
+                  </div>
+                </Card>
+              </Col>
+            </Row>
+            <Card title={'访问量'} style={{ marginTop: 20 }} className="car-box-shadow">
+              <Row gutter={24}>
+                <Col span={20}>
+                  <Echart
+                    className="echarts"
+                    option={option3}
+                    style={{ width: '100%', height: 500 }}
+                  />
+                </Col>
+                <Col span={4} >
+                  <Card title="月访问数" bordered={false}>
+                    同上期增长
+                  <Progress percent={50} />
+                  </Card>
+                  <Card title="月下载数" style={{ marginTop: 10 }} bordered={false}>
+                    同上期增长
+                  <Progress percent={50} />
+                  </Card>
+                  <Card title="月收入" style={{ marginTop: 10 }} bordered={false}>
+                    同上期增长
+                  <Progress percent={50} />
+                  </Card>
+                </Col>
+              </Row>
             </Card>
-            </Sider>
-            <Content>
-              <Echart
-                className="car-box-shadow"
-                option={option4}
-                style={{ width: '100%', height: 525, marginLeft: 20 }}
-              />
-            </Content>
-          </Layout>
-        </Content>
+            <Row gutter={24} style={{ marginTop: 20 }}>
+              <Col {...topColResponsiveProps} >
+                <Echart
+                  className="car-box-shadow"
+                  option={option}
+                  style={{ width: '100%', height: 500 }}
+                />
+              </Col>
+              <Col {...topColResponsiveProps}>
+                <Echart
+                  className="car-box-shadow"
+                  option={option2}
+                  style={{ width: '100%', height: 500 }}
+                />
+              </Col>
+            </Row>
+            {/* <Chart /> */}
+            <Layout>
+              <Sider width={300} style={{ background: '#fff' }}>
+                <Card title="时间线">
+                  <Timeline>
+                    <Timeline.Item color="green">1.3.0</Timeline.Item>
+                    <Timeline.Item color="green">2018-08-01</Timeline.Item>
+                    <Timeline.Item color="red">
+                      <p>第一个正式版本，发布了图表、选择器、加载更多、树选择、分页、文字提示、气泡卡片、标签页、导航菜单、对话框、多选框、单选框、按钮、图标、加载中 这些组件。</p>
+                      <p>发布了Fish Design官网和相关文档。</p>
+                    </Timeline.Item>
+                    <Timeline.Item color="green">1.3.2</Timeline.Item>
+                    <Timeline.Item color="green">2018-09-29</Timeline.Item>
+                    <Timeline.Item>
+                      <p>发布了时间选择框、日期选择框、图片查看器、富文本编辑器、列表、全局提示框、开关、输入框、面包屑、表单、布局、上传、级联选择、进度条、抽屉、折叠面板、步骤条、徽标、树形控件 这些组件。</p>
+                    </Timeline.Item>
+                  </Timeline>
+                </Card>
+              </Sider>
+              <Content>
+                <Echart
+                  className="car-box-shadow"
+                  option={option4}
+                  style={{ width: '100%', height: 603, marginLeft: 20 }}
+                />
+              </Content>
+            </Layout>
+          </Content>
         </DrawerPage>
       </div>
     );

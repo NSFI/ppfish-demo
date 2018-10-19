@@ -87,7 +87,7 @@ class Header extends Component {
                 访问量
             </div>
               <div className="u-number">
-                999,999
+                25,992
             </div>
             </div>
             <div>
@@ -95,7 +95,7 @@ class Header extends Component {
                 下载数
               </div>
               <div className="u-number">
-                999,999
+                13,679
             </div>
             </div>
             <div>
@@ -103,7 +103,7 @@ class Header extends Component {
                 销售额
               </div>
               <div className="u-number">
-                999,999
+                399,399
             </div>
             </div>
           </div>

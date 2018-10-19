@@ -5,8 +5,14 @@ class DrawerPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      styleHeight:{
+        right:0,
+        position:'fixed',
+        top:'50%'
+      }
     };
+    
   }
   onChange = (bool) => {
     console.log(bool);
@@ -15,12 +21,27 @@ class DrawerPage extends Component {
   onTouchEnd = () => {
     this.setState({
       open: false,
+    },()=>{
+      this.setState({
+        styleHeight: {right:this.state.open?384:0,
+          position:'fixed',
+          top:'50%'
+        }
+      })
     });
   }
 
   onSwitch = () => {
+    
     this.setState({
       open: !this.state.open,
+    },()=>{
+      this.setState({
+        styleHeight: {right:this.state.open?384:0,
+          position:'fixed',
+          top:'50%'
+        }
+      })
     });
   }
   onCloseClick = () => {
@@ -28,11 +49,11 @@ class DrawerPage extends Component {
       open: !this.state.open,
     });
   }
-  onSelect = (selectedKeys, info) => {
-  }
   render() {
+    console.log(this.state)
     return (
       <div>
+        
         <Drawer
           handler={false}
           level={null}
@@ -45,8 +66,16 @@ class DrawerPage extends Component {
         >
           <div>
           <div style={{textAlign:'right',padding:10}}>
-        <Icon type="close-tag-line" style={{cursor:'pointer'}} onClick={()=>{this.setState({open: !this.state.open,})}}/>
+        <Icon type="close-tag-line" style={{cursor:'pointer'}} onClick={()=>{this.setState({open: !this.state.open,},()=>{
+      this.setState({
+        styleHeight: {right:this.state.open?384:0,
+          position:'fixed',
+          top:'50%'
+        }
+      })
+    })}}/>
         <Divider />
+
       </div>
           <Tree
         defaultExpandedKeys={['0-0-1']}
@@ -73,14 +102,15 @@ class DrawerPage extends Component {
           }}
         >
           {this.props.children}
-          <Button
+          
+        </div>
+        <Button
             type="primary"
             onClick={this.onSwitch}
-            style={{ position:'fixed',right:0,top:'50%' }}
+            style={this.state.styleHeight}
           >
             {!this.state.open ? '打开菜单' : '关闭菜单'}
           </Button>
-        </div>
       </div>
     )
   }
