@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Echart, Row, Col, Layout, Menu, Icon, Breadcrumb, Card, List, Progress } from 'ppfish';
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
-import Chart from './components/Chart';
 import SexChart from './components/Chart/SexChart';
 import PictorialChart from './components/Chart/PictorialChart';
 import AgeChart from './components/Chart/AgeChart';
 import RegionChart from './components/Chart/RegionChart';
 import { height } from 'window-size';
+import Header from './components/Header';
+import './Dashborad.less';
 class Dashboard extends Component {
   render() {
     const topColResponsiveProps = {
@@ -217,73 +218,73 @@ class Dashboard extends Component {
     };
     const option4 = {
       title: {
-          text: '年访问占比变化',
-          subtext: '纯属虚构',
-          top: 10,
-          left: 10
+        text: '年访问占比变化',
+        subtext: '纯属虚构',
+        top: 10,
+        left: 10
       },
       tooltip: {
-          trigger: 'item',
-          backgroundColor : 'rgba(0,0,250,0.2)'
+        trigger: 'item',
+        backgroundColor: 'rgba(0,0,250,0.2)'
       },
       legend: {
-          type: 'scroll',
-          bottom: 10,
-          data: (function (){
-              var list = [];
-              for (var i = 1; i <=28; i++) {
-                  list.push(i + 2000 + '');
-              }
-              return list;
-          })()
+        type: 'scroll',
+        bottom: 10,
+        data: (function () {
+          var list = [];
+          for (var i = 1; i <= 28; i++) {
+            list.push(i + 2000 + '');
+          }
+          return list;
+        })()
       },
       visualMap: {
-          top: 'middle',
-          right: 10,
-          color: ['red', 'yellow'],
-          calculable: true
+        top: 'middle',
+        right: 10,
+        color: ['red', 'yellow'],
+        calculable: true
       },
       radar: {
-         indicator : [
-             { text: 'IE8-', max: 400},
-             { text: 'IE9+', max: 400},
-             { text: 'Safari', max: 400},
-             { text: 'Firefox', max: 400},
-             { text: 'Chrome', max: 400}
-          ]
+        indicator: [
+          { text: 'IE8-', max: 400 },
+          { text: 'IE9+', max: 400 },
+          { text: 'Safari', max: 400 },
+          { text: 'Firefox', max: 400 },
+          { text: 'Chrome', max: 400 }
+        ]
       },
-      series : (function (){
-          var series = [];
-          for (var i = 1; i <= 28; i++) {
-              series.push({
-                  name:'浏览器（数据纯属虚构）',
-                  type: 'radar',
-                  symbol: 'none',
-                  lineStyle: {
-                      width: 1
-                  },
-                  emphasis: {
-                      areaStyle: {
-                          color: 'rgba(0,250,0,0.3)'
-                      }
-                  },
-                  data:[
-                    {
-                      value:[
-                          (40 - i) * 10,
-                          (38 - i) * 4 + 60,
-                          i * 5 + 10,
-                          i * 9,
-                          i * i /2
-                      ],
-                      name: i + 2000 + ''
-                    }
-                  ]
-              });
-          }
-          return series;
+      series: (function () {
+        var series = [];
+        for (var i = 1; i <= 28; i++) {
+          series.push({
+            name: '浏览器（数据纯属虚构）',
+            type: 'radar',
+            symbol: 'none',
+            lineStyle: {
+              width: 1
+            },
+            emphasis: {
+              areaStyle: {
+                color: 'rgba(0,250,0,0.3)'
+              }
+            },
+            data: [
+              {
+                value: [
+                  (40 - i) * 10,
+                  (38 - i) * 4 + 60,
+                  i * 5 + 10,
+                  i * 9,
+                  i * i / 2
+                ],
+                name: i + 2000 + ''
+              }
+            ]
+          });
+        }
+        return series;
       })()
-  };
+    };
     const chart = {
       age: [{ text: "19-25", value: 1989599 }],
       career: [{ text: "白领", value: 1981216 }, { text: "金领", value: 8383 }],
@@ -312,9 +313,6 @@ class Dashboard extends Component {
     };
     return (
       <div>
-
-        
-
         <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
           {/* <List
             grid={{ gutter: 16, column: 4 }}
@@ -327,24 +325,25 @@ class Dashboard extends Component {
               </List.Item>
             )}
           /> */}
+          <Header/>
           <Row gutter={24} >
             <Col span={8} >
-              <Card title={'访问年龄'}>
+              <Card title={'访问年龄'} className="car-box-shadow">
                 <AgeChart data={age} seriesName={"年龄"} style={style} />
               </Card>
             </Col>
             <Col span={8} >
-              <Card title={'访问性别'}>
+              <Card title={'访问性别'} className="car-box-shadow">
                 <SexChart data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
               </Card>
             </Col>
             <Col span={8} >
-              <Card title={'访问职业'}>
+              <Card title={'访问职业'} className="car-box-shadow">
                 <PictorialChart data={career} style={style} />
               </Card>
             </Col>
           </Row>
-          <Card title={'访问量'} style={{marginTop:20}}>
+          <Card title={'访问量'} style={{ marginTop: 20 }} className="car-box-shadow">
             <Row gutter={24}>
               <Col span={20}>
                 <Echart
@@ -369,17 +368,17 @@ class Dashboard extends Component {
               </Col>
             </Row>
           </Card>
-          <Row gutter={24} style={{marginTop:20}}>
-            <Col {...topColResponsiveProps}>
+          <Row gutter={24} style={{ marginTop: 20 }}>
+            <Col {...topColResponsiveProps} >
               <Echart
-                className="echarts"
+                className="car-box-shadow"
                 option={option}
                 style={{ width: 500, height: 500 }}
               />
             </Col>
             <Col {...topColResponsiveProps}>
               <Echart
-                className="echarts"
+                className="car-box-shadow"
                 option={option2}
                 style={{ width: 500, height: 500 }}
               />
@@ -388,26 +387,23 @@ class Dashboard extends Component {
 
           {/* <Chart /> */}
           <Layout>
-        <Sider width={200} style={{ background: '#fff' }}>
-          <Card title="诸葛亮">
-          皓首匹夫！苍髯老贼！你枉活九十有六，一生未立寸功，只会摇唇鼓舌！助曹为虐！一条断脊之犬，还敢在我军阵前狺狺狂吠，我从未见过有如此厚颜无耻之人！
+            <Sider width={200} style={{ background: '#fff' }}>
+              <Card title="诸葛亮" className="car-box-shadow">
+                皓首匹夫！苍髯老贼！你枉活九十有六，一生未立寸功，只会摇唇鼓舌！助曹为虐！一条断脊之犬，还敢在我军阵前狺狺狂吠，我从未见过有如此厚颜无耻之人！
           </Card>
-          <Card title="胡歌">
-          你以为只要长得漂亮就有男生喜欢？你以为只要有了钱漂亮妹子就自己贴上来了？你以为学霸就能找到好工作？我告诉你吧，这些都是真的！
+              <Card title="胡歌" className="car-box-shadow">
+                你以为只要长得漂亮就有男生喜欢？你以为只要有了钱漂亮妹子就自己贴上来了？你以为学霸就能找到好工作？我告诉你吧，这些都是真的！
           </Card>
-          </Sider>
-          <Content>
-          <Echart
-                  className="echarts"
-                  option={option4}
-                  style={{ width: 800, height: 500 ,marginLeft:20}}
-                />
-          </Content>
-        </Layout>
+            </Sider>
+            <Content>
+              <Echart
+                className="car-box-shadow"
+                option={option4}
+                style={{ width: 800, height: 500, marginLeft: 20 }}
+              />
+            </Content>
+          </Layout>
         </Content>
-
-
-
       </div>
     );
   }
