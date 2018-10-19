@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Drawer ,Menu,Icon,Button} from 'ppfish';
+import { Drawer ,Menu,Icon,Button,Tree,Divider} from 'ppfish';
+const TreeNode = Tree.TreeNode;
 class DrawerPage extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +28,8 @@ class DrawerPage extends Component {
       open: !this.state.open,
     });
   }
+  onSelect = (selectedKeys, info) => {
+  }
   render() {
     return (
       <div>
@@ -41,46 +44,26 @@ class DrawerPage extends Component {
           onCloseClick={this.onCloseClick}
         >
           <div>
-            <Menu
-              style={{ height: '200%' }}
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              mode="inline"
-            >
-              <Menu.SubMenu
-                key="sub1"
-                title={<span><Icon type="mail" /><span>Navigation One</span></span>}
-              >
-                <Menu.ItemGroup key="g1" title="Item 1">
-                  <Menu.Item key="1">Option 1</Menu.Item>
-                  <Menu.Item key="2">Option 2</Menu.Item>
-                </Menu.ItemGroup>
-                <Menu.ItemGroup key="g2" title="Item 2">
-                  <Menu.Item key="3">Option 3</Menu.Item>
-                  <Menu.Item key="4">Option 4</Menu.Item>
-                </Menu.ItemGroup>
-              </Menu.SubMenu>
-              <Menu.SubMenu
-                key="sub2"
-                title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}
-              >
-                <Menu.Item key="5">Option 5</Menu.Item>
-                <Menu.Item key="6">Option 6</Menu.Item>
-                <Menu.SubMenu key="sub3" title="Submenu">
-                  <Menu.Item key="7">Option 7</Menu.Item>
-                  <Menu.Item key="8">Option 8</Menu.Item>
-                </Menu.SubMenu>
-              </Menu.SubMenu>
-              <Menu.SubMenu
-                key="sub4"
-                title={<span><Icon type="setting" /><span>Navigation Three</span></span>}
-              >
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
-              </Menu.SubMenu>
-            </Menu>
+          <div style={{textAlign:'right',padding:10}}>
+        <Icon type="close-tag-line" style={{cursor:'pointer'}} onClick={()=>{this.setState({open: !this.state.open,})}}/>
+        <Divider />
+      </div>
+          <Tree
+        defaultExpandedKeys={['0-0-1']}
+        defaultSelectedKeys={['0-0-1-0']}
+        onSelect={this.onSelect}
+      >
+        <TreeNode title="pro" key="0-0-0-0-0">
+          <TreeNode title="表单页" key="0-0-0">
+            <TreeNode title="基础表单" key="0-0-0-0" disabled />
+            <TreeNode title="高级表单" key="0-0-0-1" />
+          </TreeNode>
+          <TreeNode title="列表页" key="0-0-1">
+            <TreeNode title="基础列表" key="0-0-0-3" disabled />
+            <TreeNode title="高级列表" key="0-0-0-2" />
+          </TreeNode>
+        </TreeNode>
+      </Tree>
           </div>
         </Drawer>
         <div
@@ -95,7 +78,7 @@ class DrawerPage extends Component {
             onClick={this.onSwitch}
             style={{ position:'fixed',right:0,top:'50%' }}
           >
-            {!this.state.open ? '打开抽屉' : '关闭抽屉'}
+            {!this.state.open ? '打开菜单' : '关闭菜单'}
           </Button>
         </div>
       </div>
