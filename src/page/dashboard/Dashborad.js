@@ -22,6 +22,7 @@ import AgeChart from './components/Chart/AgeChart';
 import RegionChart from './components/Chart/RegionChart';
 import Header from './components/Header';
 import './Dashborad.less';
+import DrawerPage from './components/DrawerPage';
 class Dashboard extends Component {
   render() {
     const topColResponsiveProps = {
@@ -335,6 +336,7 @@ class Dashboard extends Component {
     };
     return (
       <div>
+        <DrawerPage>
         <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
           {/* <List
             grid={{ gutter: 16, column: 4 }}
@@ -457,6 +459,7 @@ class Dashboard extends Component {
             </Content>
           </Layout>
         </Content>
+        </DrawerPage>
       </div>
     );
   }

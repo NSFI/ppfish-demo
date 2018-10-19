@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar } from 'ppfish';
+import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar, Breadcrumb } from 'ppfish';
 import Dashboard from './page/dashboard/Dashborad.js';
 import DetailPage from './page/detailPage/routes.js';
 import FormPage from './page/formPage/routes.js';
@@ -32,7 +32,8 @@ class App extends Component {
     }
     return {
       subDefault: pathList[1],
-      opnDefault: pathList[2]
+      opnDefault: pathList[2],
+      List:pathList
     }
   }
   onOpenChange = (openKeys) => {
@@ -45,8 +46,9 @@ class App extends Component {
       });
     }
   }
+
   render() {
-    const { subDefault, opnDefault } = this.setDefault();
+    const { subDefault, opnDefault,List } = this.setDefault();
     const { collapsed } = this.state;
     const defaultPros = !collapsed ? { openKeys: this.state.openKeys } : {};
     const menu = (
@@ -171,39 +173,51 @@ class App extends Component {
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }} className="demo-header">
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-line' : 'menu-line'}
-              onClick={this.toggle}
-            />
-            <div className="demo-setting">
-              <Row gutter={24} style={{ marginRight: 20 }}>
-                <Col span={8}>
-                  
-                  <Badge dot>
-                    <Icon type="search-line" style={{ cursor: 'pointer', fontSize: 20 }} />
-                  </Badge>
-                </Col>
-                <Col span={8}>
-                  <Popover content={content}>
-                    <a className="fishd-dropdown-link">
-                      <Badge count={5}>
-                        <Icon type="demo-phone" style={{ cursor: 'pointer', fontSize: 20 }} />
-                      </Badge>
-                    </a>
-                  </Popover>
-                </Col>
-                <Col span={8}>
-                  <Dropdown overlay={menu}>
-                    <a className="fishd-dropdown-link">
+            <Row gutter={24}>
+              <Col span={20}>
+                <Icon
+                  className="trigger"
+                  type={this.state.collapsed ? 'menu-line' : 'menu-line'}
+                  onClick={this.toggle}
+                />
+                <Breadcrumb style={{display:'inline-block',marginLeft:20}}>
+                  {List.map((it,i)=> {
+                    if(i>0){
+                      return (<Breadcrumb.Item key={i}>{it}</Breadcrumb.Item>)
+                    }
+                  })}
+                </Breadcrumb>
+              </Col>
+              <Col span={4}>
+                <div className="demo-setting">
+                  <Row gutter={24} style={{ marginRight: 20 }}>
+                    <Col span={8}>
                       <Badge dot>
-                        <Avatar size="small" src={require('../assets/img/FD-Logo.png')} />
+                        <Icon type="search-line" style={{ cursor: 'pointer', fontSize: 20 }} />
                       </Badge>
-                    </a>
-                  </Dropdown>
-                </Col>
-              </Row>
-            </div>
+                    </Col>
+                    <Col span={8}>
+                      <Popover content={content}>
+                        <a className="fishd-dropdown-link">
+                          <Badge count={5}>
+                            <Icon type="demo-phone" style={{ cursor: 'pointer', fontSize: 20 }} />
+                          </Badge>
+                        </a>
+                      </Popover>
+                    </Col>
+                    <Col span={8}>
+                      <Dropdown overlay={menu}>
+                        <a className="fishd-dropdown-link">
+                          <Badge dot>
+                            <Avatar size="small" src={require('../assets/img/FD-Logo.png')} />
+                          </Badge>
+                        </a>
+                      </Dropdown>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
           </Header>
           <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280 }}>
             <div>
