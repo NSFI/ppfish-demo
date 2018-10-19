@@ -349,7 +349,7 @@ class Dashboard extends Component {
                 <Echart
                   className="echarts"
                   option={option3}
-                  style={{ width: 800, height: 500 }}
+                  style={{ width: '100%', height: 500 }}
                 />
               </Col>
               <Col span={4} >
@@ -373,18 +373,17 @@ class Dashboard extends Component {
               <Echart
                 className="car-box-shadow"
                 option={option}
-                style={{ width: 500, height: 500 }}
+                style={{ width: '100%', height: 500 }}
               />
             </Col>
             <Col {...topColResponsiveProps}>
               <Echart
                 className="car-box-shadow"
                 option={option2}
-                style={{ width: 500, height: 500 }}
+                style={{ width: '100%', height: 500 }}
               />
             </Col>
           </Row>
-
           {/* <Chart /> */}
           <Layout>
             <Sider width={200} style={{ background: '#fff' }}>
@@ -399,7 +398,7 @@ class Dashboard extends Component {
               <Echart
                 className="car-box-shadow"
                 option={option4}
-                style={{ width: 800, height: 500, marginLeft: 20 }}
+                style={{ width: '100%', height: 525, marginLeft: 20 }}
               />
             </Content>
           </Layout>
