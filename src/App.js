@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon } from 'ppfish';
+import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar } from 'ppfish';
 import Dashboard from './page/dashboard/Dashborad.js';
 import DetailPage from './page/detailPage/routes.js';
 import FormPage from './page/formPage/routes.js';
@@ -49,6 +49,25 @@ class App extends Component {
     const { subDefault, opnDefault } = this.setDefault();
     const { collapsed } = this.state;
     const defaultPros = !collapsed ? { openKeys: this.state.openKeys } : {};
+    const menu = (
+      <Menu>
+        <Menu.Item>
+          <a target="_blank" rel="noopener noreferrer" href="http://qi.163.com/">1st menu item</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a target="_blank" rel="noopener noreferrer" href="http://www.163.com/">2nd menu item</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a target="_blank" rel="noopener noreferrer" href="http://email.163.com/">3rd menu item</a>
+        </Menu.Item>
+      </Menu>
+    );
+    const content = (
+      <div>
+        <p>Content</p>
+        <p>Content</p>
+      </div>
+    );
     return (
       <Layout>
         <Sider
@@ -59,9 +78,9 @@ class App extends Component {
           <i className="logo" />
           {
             !collapsed
-            ?
-            <span className="logo-text">Fish Design</span>
-            :null
+              ?
+              <span className="logo-text">Fish Design</span>
+              : null
           }
           <Menu
             className="demo-menu"
@@ -158,9 +177,32 @@ class App extends Component {
               onClick={this.toggle}
             />
             <div className="demo-setting">
-            <Icon type="search-line" style={{marginRight:'10px',cursor:'pointer'}}/>
-            <Icon type="demo-phone"  style={{marginRight:'10px',cursor:'pointer'}}/>
-            <img className="demo-avator" src={require('../assets/img/FD-Logo.png')}/>
+              <Row gutter={24} style={{ marginRight: 20 }}>
+                <Col span={8}>
+                  
+                  <Badge dot>
+                    <Icon type="search-line" style={{ cursor: 'pointer', fontSize: 20 }} />
+                  </Badge>
+                </Col>
+                <Col span={8}>
+                  <Popover content={content}>
+                    <a className="fishd-dropdown-link">
+                      <Badge count={5}>
+                        <Icon type="demo-phone" style={{ cursor: 'pointer', fontSize: 20 }} />
+                      </Badge>
+                    </a>
+                  </Popover>
+                </Col>
+                <Col span={8}>
+                  <Dropdown overlay={menu}>
+                    <a className="fishd-dropdown-link">
+                      <Badge dot>
+                        <Avatar size="small" src={require('../assets/img/FD-Logo.png')} />
+                      </Badge>
+                    </a>
+                  </Dropdown>
+                </Col>
+              </Row>
             </div>
           </Header>
           <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280 }}>

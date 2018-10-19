@@ -29,14 +29,14 @@ class Step1 extends React.PureComponent {
             {getFieldDecorator('payAccount', {
               rules: [{ required: true, message: '请选择付款账户' }],
             })(
-              <Select placeholder="test@example.com" style={{ height: 36 }}>
+              <Select placeholder="test@example.com" style={{ height: 32 }}>
                 <Option value="ant-design@alipay.com">xxx.com</Option>
               </Select>
             )}
           </Form.Item>
           <Form.Item {...formItemLayout} label="收款账户">
             <Input.Group compact>
-              <Select defaultValue="alipay" style={{ width: 100, height: 36 }}>
+              <Select defaultValue="alipay" style={{ width: 100, height: 32 }}>
                 <Option value="alipay">账号</Option>
                 <Option value="bank">银行账户</Option>
               </Select>

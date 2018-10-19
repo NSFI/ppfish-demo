@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { Echart, Row, Col, Layout, Menu, Icon, Breadcrumb, Card, List, Progress } from 'ppfish';
+import {
+  Echart,
+  Row,
+  Col,
+  Layout,
+  Menu,
+  Icon,
+  Breadcrumb,
+  Card,
+  List,
+  Progress,
+  Badge,
+  Carousel,
+  BackTop,
+  Timeline
+} from 'ppfish';
 const { Content, Sider } = Layout;
-const { SubMenu } = Menu;
 import SexChart from './components/Chart/SexChart';
 import PictorialChart from './components/Chart/PictorialChart';
 import AgeChart from './components/Chart/AgeChart';
 import RegionChart from './components/Chart/RegionChart';
-import { height } from 'window-size';
 import Header from './components/Header';
 import './Dashborad.less';
 class Dashboard extends Component {
@@ -292,6 +305,15 @@ class Dashboard extends Component {
       region: [{ text: "山东", value: 85648 }, { text: "甘肃", value: 16867 }, { text: "江苏", value: 201798 }],
       wealth: [{ text: "强", value: 1112313 }, { text: "中", value: 877286 }]
     }
+
+    const data1 = [
+      'Racing car sprays burning fuel into crowd.',
+      'Japanese princess to wed commoner.',
+      'Australian walks 100km after outback crash.',
+      'Man charged over missing wedding girl.',
+      'Los Angeles battles huge wildfires.',
+      'Man charged over missing wedding girl.',
+    ];
     // const source = [{
     //   title: '访问量',
     //   num: 
@@ -325,7 +347,7 @@ class Dashboard extends Component {
               </List.Item>
             )}
           /> */}
-          <Header/>
+          <Header />
           <Row gutter={24} >
             <Col span={8} >
               <Card title={'访问年龄'} className="car-box-shadow">
@@ -342,6 +364,28 @@ class Dashboard extends Component {
                 <PictorialChart data={career} style={style} />
               </Card>
             </Col>
+          </Row>
+          <Row gutter={24}>
+            <Col span={12}>
+                <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow">
+                      <Carousel autoplay>
+                        <div><RegionChart data={region} style={{width:'100%',height:'300px'}}/></div>
+                        <div><PictorialChart data={career} style={{width:'100%',height:'300px'}}/></div>
+                        <div><RegionChart data={wealth} style={{width:'100%',height:'300px'}}/></div>
+                      </Carousel>
+                </Card>
+            </Col>
+            <Col span={12} >
+            <Card title={'列表'} style={{ marginTop: 20 }} className="car-box-shadow">
+                <List
+                  bordered
+                  striped
+                  style={{height:300}}
+                  dataSource={data1}
+                  renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+                </Card>
+              </Col>
           </Row>
           <Card title={'访问量'} style={{ marginTop: 20 }} className="car-box-shadow">
             <Row gutter={24}>
@@ -386,13 +430,23 @@ class Dashboard extends Component {
           </Row>
           {/* <Chart /> */}
           <Layout>
-            <Sider width={200} style={{ background: '#fff' }}>
-              <Card title="诸葛亮" className="car-box-shadow">
-                皓首匹夫！苍髯老贼！你枉活九十有六，一生未立寸功，只会摇唇鼓舌！助曹为虐！一条断脊之犬，还敢在我军阵前狺狺狂吠，我从未见过有如此厚颜无耻之人！
-          </Card>
-              <Card title="胡歌" className="car-box-shadow">
-                你以为只要长得漂亮就有男生喜欢？你以为只要有了钱漂亮妹子就自己贴上来了？你以为学霸就能找到好工作？我告诉你吧，这些都是真的！
-          </Card>
+            <Sider width={300} style={{ background: '#fff'}}>
+            <Card title="时间线">
+            <Timeline>
+              <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item color="red">
+                <p>Solve initial network problems 1</p>
+                <p>Solve initial network problems 2</p>
+                <p>Solve initial network problems 3 2015-09-01</p>
+              </Timeline.Item>
+              <Timeline.Item>
+                <p>Technical testing 1</p>
+                <p>Technical testing 2</p>
+                <p>Technical testing 3 2015-09-01</p>
+              </Timeline.Item>
+            </Timeline>
+            </Card>
             </Sider>
             <Content>
               <Echart

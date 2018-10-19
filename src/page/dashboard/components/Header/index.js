@@ -1,29 +1,85 @@
 import React, { Component } from 'react';
-import { Tooltip } from 'ppfish';
+import { Tooltip,Tag,Icon,Input } from 'ppfish';
 import './index.less';
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tags: ['年龄：20-25', '职业：web前端'],
+      inputVisible: false,
+      inputValue: '',
+    };
+  }
+  handleClose = (removedTag) => {
+    const tags = this.state.tags.filter(tag => tag !== removedTag);
+    console.log(tags);
+    this.setState({ tags });
+  }
+
+  showInput = () => {
+    this.setState({ inputVisible: true }, () => this.input.focus());
+  }
+
+  handleInputChange = (e) => {
+    this.setState({ inputValue: e.target.value });
+  }
+
+  handleInputConfirm = () => {
+    const state = this.state;
+    const inputValue = state.inputValue;
+    let tags = state.tags;
+    if (inputValue && tags.indexOf(inputValue) === -1) {
+      tags = [...tags, inputValue];
+    }
+    console.log(tags);
+    this.setState({
+      tags,
+      inputVisible: false,
+      inputValue: '',
+    });
+  }
+
+  saveInputRef = input => this.input = input
+
   render() {
+    const { tags, inputVisible, inputValue } = this.state;
     return (
       <div className="g-rigidDemand" >
         <div className="u-content" >
           <div className="u-rigidDemand-title">
             <div className="u-rigidDemand-title-top">月访问量</div>
             <div className="u-rigidDemand-title-bottom">
-              <Tooltip placement="bottom" title="年龄：20-25">
-                <div className="tagItem">
-                  年龄：20-25
+              <div>
+                {tags.map((tag, index) => {
+                  const isLongTag = tag.length > 20;
+                  const tagElem = (
+                    <Tag key={tag} color="#87d068" closable={index !== 0} afterClose={() => this.handleClose(tag)} >
+                      {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+                    </Tag>
+                  );
+                  return isLongTag ? <Tooltip title={tag} key={tag}>{tagElem}</Tooltip> : tagElem;
+                })}
+                {inputVisible && (
+                  <Input
+                    ref={this.saveInputRef}
+                    type="text"
+                    size="small"
+                    style={{ width: 78 }}
+                    value={inputValue}
+                    onChange={this.handleInputChange}
+                    onBlur={this.handleInputConfirm}
+                    onPressEnter={this.handleInputConfirm}
+                  />
+                )}
+                {!inputVisible && (
+                  <Tag
+                    onClick={this.showInput}
+                    style={{ background: '#fff', border: '1px dashed #e1e3e6' }}
+                  >
+                    <Icon type="upload-plus" /> New Tag
+          </Tag>
+                )}
               </div>
-              </Tooltip>
-              <Tooltip placement="bottom" title=" 收入:中档，高档">
-                <div className="tagItem" >
-                  职业:IT
-              </div>
-              </Tooltip>
-              <Tooltip placement="bottom" title="是否有车：否">
-                <div className="tagItem">
-                  性别:男，女
-              </div>
-              </Tooltip>
             </div>
           </div>
           <div className="u-statistical" >
