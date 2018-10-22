@@ -25,6 +25,8 @@
   color: #fff;
   font-size: 20px;
   font-weight: 700;
+  white-space:nowrap;
+  overflow: hidden;
 }
 .demo-avator {
   display: inline-block;

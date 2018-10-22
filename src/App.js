@@ -76,6 +76,8 @@ class App extends Component {
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
+          style={{whiteSpace: 'nowrap',
+            overflow: 'hidden'}}
         >
           <i className="logo" />
           {
@@ -94,8 +96,11 @@ class App extends Component {
             {...defaultPros}
           >
             <Menu.Item key="homePage-home">
+              <Icon type="home-line"/>
               <span>
-                <Link to="/homePage/home">首页</Link>
+                <Link to="/homePage/home"> {
+                !collapsed ? '首页' : null
+              }</Link>
               </span>
             </Menu.Item>
             <SubMenu key="formPage" title={<span><Icon type="demo-file" />
