@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Card, Badge, Table, Divider, Icon, Row, Col, Tabs } from 'ppfish';
 const TabPane = Tabs.TabPane;
-import moment from 'moment';
 import './BasicDetail.less';
 //3个为一组
 const groupNew = (arr) => {
@@ -63,7 +62,7 @@ class AdvancedDetail extends Component {
         title: '上次调度时间',
         dataIndex: 'updatedAt',
         sorter: true,
-        render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+        render: val => <span>2018-10-01</span>,
       },
       {
         title: '操作',

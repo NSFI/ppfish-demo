@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import moment from 'moment';
 import {
   List,
   Card,
@@ -133,7 +132,7 @@ class BasicList extends Component {
           </div>
           <div className="listContentItem">
             <span>开始时间</span>
-            <p>{moment(createdAt).format('YYYY-MM-DD HH:mm')}</p>
+            <p>2018-10-01</p>
           </div>
           <div className="listContentItem">
             <Progress percent={percent} status={status} strokeWidth={6} style={{ width: 180 }} />
@@ -182,7 +181,7 @@ class BasicList extends Component {
           <FormItem label="开始时间" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{ required: true, message: '请选择开始时间' }],
-              initialValue: current.createdAt ? moment(current.createdAt) : null,
+              initialValue: current.createdAt ? 2018-10-01 : null,
             })(
               <DatePicker
                 showTime

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import moment from 'moment';
 import './TableList.less';
 import {
   Row,
@@ -87,7 +86,7 @@ class TableList extends Component {
         title: '上次调度时间',
         dataIndex: 'updatedAt',
         sorter: true,
-        render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+        render: val => <span>2018-10-01</span>,
       },
       {
         title: '操作',

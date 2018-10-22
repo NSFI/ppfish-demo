@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import moment from 'moment';
 import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col, Button } from 'ppfish';
 import StandardFormRow from './StandardFormRow';
 const { Option } = Select;
@@ -81,7 +80,7 @@ class SearchList extends Component {
           <Avatar src={avatar} size="small" />
           <a href={href}>{owner}</a> 发布在
           <a href={href}>{href}</a>
-          <em>{moment(updatedAt).format('YYYY-MM-DD HH:mm')}</em>
+          <em>2018-10-01</em>
         </div>
       </div>
     );
