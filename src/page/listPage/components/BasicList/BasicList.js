@@ -181,7 +181,7 @@ class BasicList extends Component {
           <FormItem label="开始时间" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{ required: true, message: '请选择开始时间' }],
-              initialValue: current.createdAt ? 2018-10-01 : null,
+              initialValue: current.createdAt ?'2018-10-01' : null,
             })(
               <DatePicker
                 showTime
