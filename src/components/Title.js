@@ -6,10 +6,6 @@ import './Title.less';
 class App extends Component {
   constructor(props) {
     super(props);
-    // 设置面包屑
-    this.breadcrumb = [{
-      text: '详情页'
-    }];
   }
   handleChangeTitle = () => {
     const { location,basicList } = this.props;

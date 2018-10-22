@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar, Breadcrumb } from 'ppfish';
+import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar, Breadcrumb,Divider } from 'ppfish';
 import Dashboard from './page/dashboard/Dashborad.js';
 import DetailPage from './page/detailPage/routes.js';
 import FormPage from './page/formPage/routes.js';
@@ -54,20 +54,21 @@ class App extends Component {
     const menu = (
       <Menu>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://qi.163.com/">1st menu item</a>
+          <a target="_blank" rel="noopener noreferrer" href="http://qi.163.com/">个人中心</a>
         </Menu.Item>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.163.com/">2nd menu item</a>
+          <a target="_blank" rel="noopener noreferrer" href="http://www.163.com/">个人设置</a>
+          <div style={{borderTop:'1px solid #e8eaed',marginTop:5}}></div>
         </Menu.Item>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://email.163.com/">3rd menu item</a>
+          <a target="_blank" rel="noopener noreferrer" href="http://email.163.com/">退出登陆</a>
         </Menu.Item>
       </Menu>
     );
     const content = (
       <div>
-        <p>Content</p>
-        <p>Content</p>
+        <p>信息1</p>
+        <p>信息2</p>
       </div>
     );
     return (
