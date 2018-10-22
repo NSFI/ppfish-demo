@@ -60,8 +60,8 @@ class App extends Component {
             <div className="form-hd-left">
               <h3 className="form-hd-title">分布表单</h3>
             </div>
-            <div className="form-hd-right"></div>
           </div>
+          <p>将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。</p>
           <div className="u-form-content">
             <div className="g-steps">
               <Steps current={this.getCurrentStep()} style={{marginBottom:"20px"}}>

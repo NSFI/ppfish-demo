@@ -50,6 +50,7 @@ class CardList extends Component {
     return(
       <div>
        <div className="cardList">
+          <p>段落示意：用最小的工作量，提供跨越设计与开发的体验解决方案。</p>
           <List
             rowKey="id"
             grid={{ gutter: 24, lg: 3, md: 2, sm: 1, xs: 1 }}
@@ -63,10 +64,6 @@ class CardList extends Component {
                       title={<a>{item.title}</a>}
                       description={
                         <div className="item">{item.description}</div>
-                        
-                        // <Ellipsis className="item" lines={3}>
-                        //   {item.description}
-                        // </Ellipsis>
                       }
                     />
                   </Card>

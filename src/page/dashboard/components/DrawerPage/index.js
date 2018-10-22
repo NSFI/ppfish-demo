@@ -1,47 +1,24 @@
 import React, { Component } from 'react';
-import { Drawer ,Menu,Icon,Button,Tree,Divider} from 'ppfish';
-const TreeNode = Tree.TreeNode;
+import { Drawer, Tree, Select, Divider, Row, Col, Switch } from 'ppfish';
 class DrawerPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      styleHeight:{
-        right:0,
-        position:'fixed',
-        top:'50%'
-      }
+      placement: 'right',
+      childShow: true,
+      height: null,
     };
-    
-  }
-  onChange = (bool) => {
-    console.log(bool);
-  }
 
-  onTouchEnd = () => {
-    this.setState({
-      open: false,
-    },()=>{
-      this.setState({
-        styleHeight: {right:this.state.open?384:0,
-          position:'fixed',
-          top:'50%'
-        }
-      })
-    });
   }
-
-  onSwitch = () => {
-    
+  onChange = (value) => {
     this.setState({
-      open: !this.state.open,
-    },()=>{
+      placement: value,
+      width: value === 'right' || value === 'left' ? '20vw' : null,
+      childShow: false, // 删除子级，删除切换时的过渡动画。。。
+    }, () => {
       this.setState({
-        styleHeight: {right:this.state.open?384:0,
-          position:'fixed',
-          top:'50%'
-        }
-      })
+        childShow: true,
+      });
     });
   }
   onCloseClick = () => {
@@ -50,51 +27,82 @@ class DrawerPage extends Component {
     });
   }
   render() {
-    console.log(this.state)
     return (
-      <div>
-        
-        <Drawer
-          handler={false}
-          level={null}
-          width="30vw"
-          visible={this.state.open}
-          close={true}
-          onChange={this.onChange}
-          onMaskClick={this.onTouchEnd}
-          onCloseClick={this.onCloseClick}
-        >
-          <div>
-          <div style={{textAlign:'right',padding:10}}>
-        <Icon type="close-tag-line" style={{cursor:'pointer'}} onClick={()=>{this.setState({open: !this.state.open,},()=>{
-      this.setState({
-        styleHeight: {right:this.state.open?384:0,
-          position:'fixed',
-          top:'50%'
-        }
-      })
-    })}}/>
-        <Divider />
+      <div >
+        {this.state.childShow && (
+          <Drawer
+            placement={this.state.placement}
+            width={this.state.width}
+            level="null"
+          >
+            <div style={{ width: 300, padding: 20 }}>
+              <h3>主题色</h3>
+              <Row type="flex" justify="space-around">
+                <Col span={4}>
+                  <div style={{ width: 20, height: 20, backgroundColor: '#F24957', borderRadius: 2 }}></div>
+                </Col>
+                <Col span={4}>
+                  <div style={{ width: 20, height: 20, backgroundColor: '#26BD71', borderRadius: 2 }}></div>
+                </Col>
+                <Col span={4}>
+                  <div style={{ width: 20, height: 20, backgroundColor: '#FFAF0F', borderRadius: 2 }}></div>
+                </Col>
+                <Col span={4}>
+                  <div style={{ width: 20, height: 20, backgroundColor: '#8875FF', borderRadius: 2 }}></div>
+                </Col>
+                <Col span={4}>
+                  <div style={{ width: 20, height: 20, backgroundColor: '#337EFF', borderRadius: 2 }}></div>
+                </Col>
+              </Row>
+              <Divider />
+              <h3>导航模式</h3>
+              <Row type="flex" justify="space-between">
+                <Col span={12}>
+                  内容区域宽度
+            </Col>
+                <Col span={12}>
+                  <Select disabled style={{ width: 80, height: 32 }}></Select>
+                </Col>
+              </Row>
+              <Row type="flex" justify="space-between" style={{ marginTop: 15 }}>
+                <Col span={12}>
+                  固定 Header
+            </Col>
+                <Col span={12}>
+                  <Switch defaultChecked />
+                </Col>
+              </Row>
+              <Row type="flex" justify="space-between" style={{ marginTop: 15 }}>
+                <Col span={12}>
+                  下滑时隐藏 Header
+            </Col>
+                <Col span={12}>
+                  <Switch defaultChecked />
+                </Col>
+              </Row>
+              <Row type="flex" justify="space-between" style={{ marginTop: 15 }}>
+                <Col span={12}>
+                  固定侧边菜单
+            </Col>
+                <Col span={12}>
+                  <Switch defaultChecked />
+                </Col>
+              </Row>
+              <Divider />
+              <h3>其他设置</h3>
+              <Row type="flex" justify="space-between" style={{ marginTop: 15 }}>
+                <Col span={12}>
+                  色弱模式
+            </Col>
+                <Col span={12}>
+                  <Switch defaultChecked />
+                </Col>
+              </Row>
+              <Divider />
+            </div>
+          </Drawer>
 
-      </div>
-          <Tree
-        defaultExpandedKeys={['0-0-1']}
-        defaultSelectedKeys={['0-0-1-0']}
-        onSelect={this.onSelect}
-      >
-        <TreeNode title="pro" key="0-0-0-0-0">
-          <TreeNode title="表单页" key="0-0-0">
-            <TreeNode title="基础表单" key="0-0-0-0" disabled />
-            <TreeNode title="高级表单" key="0-0-0-1" />
-          </TreeNode>
-          <TreeNode title="列表页" key="0-0-1">
-            <TreeNode title="基础列表" key="0-0-0-3" disabled />
-            <TreeNode title="高级列表" key="0-0-0-2" />
-          </TreeNode>
-        </TreeNode>
-      </Tree>
-          </div>
-        </Drawer>
+        )}
         <div
           style={{
             width: '100%', height: 450,
@@ -102,15 +110,7 @@ class DrawerPage extends Component {
           }}
         >
           {this.props.children}
-          
         </div>
-        <Button
-            type="primary"
-            onClick={this.onSwitch}
-            style={this.state.styleHeight}
-          >
-            {!this.state.open ? '打开菜单' : '关闭菜单'}
-          </Button>
       </div>
     )
   }

@@ -109,8 +109,8 @@ class App extends Component {
           <div className="form-hd-left">
             <h3 className="form-hd-title">高级表单</h3>
           </div>
-          <div className="form-hd-right"></div>
         </div>
+        <p>高级表单常见于一次性输入和提交大批量数据的场景。</p>
         <div className="u-form-content">
           <Card title="仓库管理" bordered={false}>
             <Form layout="vertical" hideRequiredMark>

@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
   }
   render() {
-  const basicList = [{ conditions: 'basic', result: '基础详情页' }, { conditions: 'advanced', result: '高级详情页' }];
+  const basicList = [{ conditions: 'basic', result: '基础详情页', }, { conditions: 'advanced', result: '高级详情页' }];
     return (
       <Switch>
         <Route path="/detailPage/basic" render={props=>{

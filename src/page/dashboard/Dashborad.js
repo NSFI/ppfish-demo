@@ -351,17 +351,6 @@ class Dashboard extends Component {
       <div>
         <DrawerPage>
           <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
-            {/* <List
-            grid={{ gutter: 16, column: 4 }}
-            dataSource={source}
-            renderItem={item => (
-              <List.Item>
-                <Card title={item.title}>
-                  {item.num}
-                </Card>
-              </List.Item>
-            )}
-          /> */}
             <Header />
             <Row gutter={24} >
               <Col span={8} >
@@ -420,15 +409,15 @@ class Dashboard extends Component {
                 <Col span={4} >
                   <Card title="月访问数" bordered={false}>
                     同上期增长
-                  <Progress percent={50} />
+                  <Progress percent={50} status="active"/>
                   </Card>
                   <Card title="月下载数" style={{ marginTop: 10 }} bordered={false}>
                     同上期增长
-                  <Progress percent={50} />
+                  <Progress percent={100}/>
                   </Card>
                   <Card title="月收入" style={{ marginTop: 10 }} bordered={false}>
                     同上期增长
-                  <Progress percent={50} />
+                  <Progress percent={70} status="exception"/>
                   </Card>
                 </Col>
               </Row>
@@ -451,7 +440,14 @@ class Dashboard extends Component {
             </Row>
             {/* <Chart /> */}
             <Layout>
-              <Sider width={300} style={{ background: '#fff' }}>
+              <Content>
+                <Echart
+                  className="car-box-shadow"
+                  option={option4}
+                  style={{ width: '100%', height: 603 }}
+                />
+              </Content>
+              <Sider width={400} style={{ background: '#fff' ,marginLeft: 20}}>
                 <Card title="时间线">
                   <Timeline>
                     <Timeline.Item color="green">1.3.0</Timeline.Item>
@@ -468,13 +464,6 @@ class Dashboard extends Component {
                   </Timeline>
                 </Card>
               </Sider>
-              <Content>
-                <Echart
-                  className="car-box-shadow"
-                  option={option4}
-                  style={{ width: '100%', height: 603, marginLeft: 20 }}
-                />
-              </Content>
             </Layout>
           </Content>
         </DrawerPage>

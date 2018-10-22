@@ -140,7 +140,6 @@ class TableList extends Component {
       </Form>
     );
   }
-
   renderAdvancedForm() {
     const {
       form: { getFieldDecorator },
@@ -236,20 +235,18 @@ class TableList extends Component {
     const { selectedRows } = this.state;
     const { form } = this.props;
     const data = [
-      { name: "a", desc: 'b', callNo: 1, status: 0, updatedAt: 0, key: '1' },
-      { name: "asdsad", desc: 'beqqqw', callNo: 12, status: 0, updatedAt: 0, key: '2' },
-      { name: "adsadsa", desc: 'bqweqw', callNo: 13, status: 0, updatedAt: 0, key: '3' },
-      { name: "aertrt", desc: 'bfghfgh', callNo: 21, status: 0, updatedAt: 0, key: '4' },
-      { name: "vccxxcva", desc: 'bnvnvb', callNo: 11, status: 0, updatedAt: 0, key: '5' },
+      { name: "规则1", desc: '这是一段描述', callNo: 1, status: 0, updatedAt: 0, key: '1' },
+      { name: "规则2", desc: '这是一段描述', callNo: 12, status: 1, updatedAt: 0, key: '2' },
+      { name: "规则3", desc: '这是一段描述', callNo: 13, status: 2, updatedAt: 0, key: '3' },
+      { name: "规则4", desc: '这是一段描述', callNo: 21, status: 3, updatedAt: 0, key: '4' },
+      { name: "规则5", desc: '这是一段描述', callNo: 11, status: 3, updatedAt: 0, key: '5' },
     ]
     const CreateForm = Form.create()(props => {
       const { modalVisible } = this.state;
       const okHandle = () => {
-        form.validateFields((err, fieldsValue) => {
-          if (err) return;
-          form.resetFields();
-          handleAdd(fieldsValue);
-        });
+        this.setState({
+          modalVisible: false
+        })
       };
       return (
         <Modal
@@ -257,7 +254,9 @@ class TableList extends Component {
           title="新建规则"
           visible={modalVisible}
           onOk={okHandle}
-          onCancel={() => handleModalVisible()}
+          onCancel={() => this.setState({
+            modalVisible: false
+          })}
         >
           <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="描述">
             {form.getFieldDecorator('desc', {

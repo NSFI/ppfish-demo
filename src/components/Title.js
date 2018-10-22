@@ -29,7 +29,6 @@ class App extends Component {
           <div className="detail-hd-left">
             <h3 className="detail-hd-title">{this.handleChangeTitle()}</h3>
           </div>
-          <div className="detail-hd-right"></div>
         </div>
         <div className="u-detail-content" >
           {this.props.children}

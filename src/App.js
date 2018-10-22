@@ -93,17 +93,11 @@ class App extends Component {
             onOpenChange={this.onOpenChange}
             {...defaultPros}
           >
-            <SubMenu key="homePage" title={<span><Icon type="home-line" />
-              {
-                !collapsed ? '首页' : null
-              }
-            </span>}>
-              <Menu.Item key="homePage-home">
-                <span>
-                  <Link to="/homePage/home">首页</Link>
-                </span>
-              </Menu.Item>
-            </SubMenu>
+            <Menu.Item key="homePage-home">
+              <span>
+                <Link to="/homePage/home">首页</Link>
+              </span>
+            </Menu.Item>
             <SubMenu key="formPage" title={<span><Icon type="demo-file" />
               {
                 !collapsed ? '表单页' : null
@@ -221,6 +215,7 @@ class App extends Component {
           </Header>
           <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280 }}>
             <div>
+              <Route exact path="/" component={Dashboard} />
               <Route exact path="/homePage/home" component={Dashboard} />
               <FormPage />
               <ListPage />

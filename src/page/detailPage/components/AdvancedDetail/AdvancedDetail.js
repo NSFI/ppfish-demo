@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Badge, Table, Divider, Icon, Row, Col, Steps, Popover } from 'ppfish';
+import { Card, Badge, Table, Divider, Icon, Row, Col, Steps, Popover,Tabs } from 'ppfish';
+import moment from 'moment';
 import './AdvancedDetail.less';
-
+const TabPane = Tabs.TabPane;
 const { Step } = Steps;
 //3个为一组
 const groupNew = (arr) => {
@@ -11,6 +12,8 @@ const groupNew = (arr) => {
   }
   return groupArr;
 };
+const statusMap = ['default', 'processing', 'success', 'error'];
+const status = ['关闭', '运行中', '已上线', '异常'];
 
 const desc1 = (
   <div>
@@ -54,6 +57,69 @@ const customDot = (dot, { status }) =>
       dot
     );
 class AdvancedDetail extends Component {
+  constructor(props){
+    super(props);
+    this.columns = [
+      {
+        title: '规则名称',
+        dataIndex: 'name',
+      },
+      {
+        title: '描述',
+        dataIndex: 'desc',
+      },
+      {
+        title: '服务调用次数',
+        dataIndex: 'callNo',
+        sorter: true,
+        align: 'right',
+        render: val => `${val} 万`,
+        // mark to display a total number
+        needTotal: true,
+      },
+      {
+        title: '状态',
+        dataIndex: 'status',
+        filters: [
+          {
+            text: status[0],
+            value: 0,
+          },
+          {
+            text: status[1],
+            value: 1,
+          },
+          {
+            text: status[2],
+            value: 2,
+          },
+          {
+            text: status[3],
+            value: 3,
+          },
+        ],
+        render(val) {
+          return <Badge status={statusMap[val]} text={status[val]} />;
+        },
+      },
+      {
+        title: '上次调度时间',
+        dataIndex: 'updatedAt',
+        sorter: true,
+        render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+      },
+      {
+        title: '操作',
+        render: (text, record) => (
+          <Fragment>
+            <a onClick={() => this.handleUpdateModalVisible(true, record)}>配置</a>
+            <Divider type="vertical" />
+            <a href="">订阅警报</a>
+          </Fragment>
+        ),
+      },
+    ];
+  }
   render() {
     const data1 = [{
       name: '取货单号',
@@ -172,6 +238,18 @@ class AdvancedDetail extends Component {
         key: 'memo',
       },
     ];
+    const data3 = [
+      { name: "规则1", desc: '这是一段描述', callNo: 1, status: 0, updatedAt: 0, key: '1' },
+      { name: "规则2", desc: '这是一段描述', callNo: 12, status: 1, updatedAt: 0, key: '2' },
+      { name: "规则3", desc: '这是一段描述', callNo: 13, status: 2, updatedAt: 0, key: '3' },
+      { name: "规则4", desc: '这是一段描述', callNo: 21, status: 3, updatedAt: 0, key: '4' },
+      { name: "规则5", desc: '这是一段描述', callNo: 11, status: 3, updatedAt: 0, key: '5' },
+    ]
+    const data4 = [
+      { name: "规则3", desc: '这是一段描述', callNo: 13, status: 2, updatedAt: 0, key: '3' },
+      { name: "规则4", desc: '这是一段描述', callNo: 21, status: 1, updatedAt: 0, key: '4' },
+      { name: "规则5", desc: '这是一段描述', callNo: 11, status: 2, updatedAt: 0, key: '5' },
+    ]
     return (
       <Fragment>
         <Card title="流程进度" style={{ marginBottom: 24 }} bordered={false}>
@@ -181,6 +259,29 @@ class AdvancedDetail extends Component {
             <Step title="财务复核" />
             <Step title="完成" />
           </Steps>
+        </Card>
+        <Card title="用户信息">
+          <Row type="flex" justify="space-around">
+            <Col span={6}>用户姓名 : 付小小</Col>
+            <Col span={6}>会员卡号 : 32943898021309809423</Col>
+            <Col span={6}>身份证 : 3321944288191034921</Col>
+          </Row>
+          <Row type="flex" justify="space-around" style={{marginTop:10}}>
+            <Col span={6}>联系方式 : 18112345678</Col>
+            <Col span={6}>联系地址 : 曲丽丽 18100000000 浙江省杭州市西湖区黄姑山路工专路交叉路口</Col>
+            <Col span={6}></Col>
+          </Row>
+          <h4 style={{marginTop:10}}>信息组</h4>
+          <Row type="flex" justify="space-around" style={{marginTop:10}}>
+            <Col span={6}>某某数据 :	725</Col>
+            <Col span={6}>该数据更新时间 :	2017-08-08</Col>
+            <Col span={6}></Col>
+          </Row>
+          <Row type="flex" justify="space-around" style={{marginTop:10}}>
+            <Col span={6}>某某数据 :	725</Col>
+            <Col span={6}>该数据更新时间:	2017-08-08</Col>
+            <Col span={6}></Col>
+          </Row>
         </Card>
         <div className="u-detail-top">
           {
@@ -235,6 +336,26 @@ class AdvancedDetail extends Component {
           dataSource={data}
           scroll={{ y: 'calc( 100vh - 313px )' }}
         />
+        <div>
+          <Tabs defaultActiveKey="2" className="u-detail-top" style={{ marginBottom: '15px' }}>
+            <TabPane tab={<span><Icon type="apple" />操作日志一</span>} key="1">
+              <Table
+                dataSource={data3}
+                columns={this.columns}
+                onChange={this.handleStandardTableChange}
+                pagination={{ current: 0, pageSize: 50, total: 100 }}
+                rowKey="key" />
+            </TabPane>
+            <TabPane tab={<span><Icon type="android" />操作日志二</span>} key="2">
+              <Table
+                dataSource={data4}
+                columns={this.columns}
+                onChange={this.handleStandardTableChange}
+                pagination={{ current: 0, pageSize: 50, total: 100 }}
+                rowKey="key" />
+            </TabPane>
+          </Tabs>
+        </div>
       </Fragment>
     )
   }

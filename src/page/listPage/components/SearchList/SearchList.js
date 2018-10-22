@@ -25,46 +25,46 @@ class SearchList extends Component {
       id: 'React',
       star: '设计语言',
       like: '云商服',
-      message: '44',
+      message: '3',
       href: 'https://www.baidu.com',
       title: 'React',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
       avatar: require('../../../../../assets/img/FD-Logo.png'),
-      owner: '甲',
+      owner: '路人甲',
     },{
       id: 'Angular',
       star: '设计语言',
       like: '云商服',
-      message: '44',
+      message: '12',
       href: 'https://www.baidu.com',
       title: 'Angular',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
       avatar: require('../../../../../assets/img/FD-Logo.png'),
-      owner: '乙',
+      owner: '路人乙',
     },{
       id: 'Vue',
       star: '设计语言',
       like: '云商服',
-      message: '44',
+      message: '23',
       href: 'https://www.baidu.com',
       title: 'Vue',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
       avatar: require('../../../../../assets/img/FD-Logo.png'),
-      owner: '丙',
+      owner: '路人丙',
     },{
       id: 'Fish Design',
       star: '设计语言',
       like: '云商服',
-      message: '44',
+      message: '66',
       href: 'https://www.baidu.com',
       title: 'Fish Design',
       content: '段落示意：xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。xxxx设计平台 xxxx，用最小的工作量，无缝接入xxxx生态，提供跨越设计与开发的体验解决方案。',
       updatedAt: 0,
       avatar: require('../../../../../assets/img/FD-Logo.png'),
-      owner: '丁',
+      owner: '路人丁',
     },];
     const owners = [];
     const loading = false;
@@ -191,9 +191,9 @@ class SearchList extends Component {
                   }
                   description={
                     <span>
-                      <Tag>a</Tag>
-                      <Tag>baidu</Tag>
-                      <Tag>c</Tag>
+                      <Tag>yun</Tag>
+                      <Tag>netease</Tag>
+                      <Tag>先知</Tag>
                     </span>
                   }
                 />
