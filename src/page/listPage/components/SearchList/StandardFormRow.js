@@ -8,7 +8,6 @@ const StandardFormRow = ({ title, children, last, block, grid, ...rest }) => {
     ["standardFormRowLast"]: last,
     ["standardFormRowGrid"]: grid,
   });
-
   return (
     <div className={cls} {...rest}>
       {title && (

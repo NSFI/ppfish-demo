@@ -10,11 +10,9 @@ import {
   Icon,
   Button,
   Dropdown,
-  Menu,
   InputNumber,
   DatePicker,
   Modal,
-  message,
   Badge,
   Divider,
   Steps,
@@ -22,12 +20,8 @@ import {
   Table
 } from 'ppfish';
 const FormItem = Form.Item;
-const { Step } = Steps;
-const { TextArea } = Input;
 const { Option } = Select;
-const RadioGroup = Radio.Group;
 
-const getValue = obj => Object.keys(obj).map(key => obj[key]).join(',');
 const statusMap = ['default', 'processing', 'success', 'error'];
 const status = ['关闭', '运行中', '已上线', '异常'];
 
@@ -294,7 +288,6 @@ class TableList extends Component {
               rowKey="key" />
           </div>
         </Card>
-
       </div>
     )
   }

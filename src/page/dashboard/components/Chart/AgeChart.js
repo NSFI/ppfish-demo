@@ -18,7 +18,6 @@ const TOOLTIP_STYLE = {
 const colorList = ['#F8355C', '#FFAF0F', '#26BD71', '#37C6E6', '#4D6AFF','#7231F5', '#B4B8CA'];
 
 const  getPieOption = (data, seriesName) =>  {
-  console.log(data, seriesName)
   const formatData = [];
 
   data.forEach((item, index) => {

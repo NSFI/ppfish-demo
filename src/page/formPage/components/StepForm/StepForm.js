@@ -26,7 +26,6 @@ class App extends Component {
     this.setState({ current: index });
   }
   getCurrentStep() {
-    console.log(this.props)
     const { location } = this.props;
     const { pathname } = location;
     const pathList = pathname.split('/');

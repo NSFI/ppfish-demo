@@ -30,21 +30,18 @@ class BasicList extends Component {
     super(props);
     this.state = { visible: false, done: false };
   }
-
   showModal = () => {
     this.setState({
       visible: true,
       current: undefined,
     });
   };
-
   showEditModal = item => {
     this.setState({
       visible: true,
       current: item,
     });
   };
-
   handleDone = () => {
     setTimeout(() => this.addBtn.blur(), 0);
     this.setState({
@@ -52,27 +49,22 @@ class BasicList extends Component {
       visible: false,
     });
   };
-
   handleCancel = () => {
     setTimeout(() => this.addBtn.blur(), 0);
     this.setState({
       visible: false,
     });
   };
-
   handleSubmit = e => {
     e.preventDefault();
-    const { dispatch, form } = this.props;
+    const { form } = this.props;
     const { current } = this.state;
-    const id = current ? current.id : '';
-
     setTimeout(() => this.addBtn.blur(), 0);
     form.validateFields((err, fieldsValue) => {
       if (err) return;
       this.setState({
         done: true,
       });
-
     });
   };
   deleteItem = id => {
@@ -82,7 +74,6 @@ class BasicList extends Component {
       payload: { id },
     });
   };
-
   render() {
     const { form } = this.props;
     const { getFieldDecorator, validateFields } = form;
@@ -140,7 +131,6 @@ class BasicList extends Component {
         </div>
       )
     };
-
     const extraContent = (
       <div className="extraContent">
         <RadioGroup defaultValue="all">
@@ -165,7 +155,6 @@ class BasicList extends Component {
         </a>
       </Dropdown>
     );
-
     const getModalContent = () => {
       if (done) {
         this.handleDone();
@@ -217,7 +206,6 @@ class BasicList extends Component {
       pageSize: 5,
       total: 50,
     };
-
     const Info = ({ title, value, bordered }) => (
       <div className={'headerInfo'}>
         <span>{title}</span>
@@ -225,7 +213,6 @@ class BasicList extends Component {
         {bordered && <em />}
       </div>
     );
-
     return (
       <div className="standardList">
         <Card bordered={false}>

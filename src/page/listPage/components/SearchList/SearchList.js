@@ -3,7 +3,6 @@ import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col, Button } from 'p
 import StandardFormRow from './StandardFormRow';
 const { Option } = Select;
 const FormItem = Form.Item;
-const pageSize = 5;
 class SearchList extends Component {
   constructor(props) {
     super(props);
@@ -164,8 +163,6 @@ class SearchList extends Component {
           bordered={false}
           bodyStyle={{ padding: '8px 32px 32px 32px' }}
         >
-
-
           <List
             size="large"
             rowKey="id"
