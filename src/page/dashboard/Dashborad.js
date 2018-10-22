@@ -4,15 +4,9 @@ import {
   Row,
   Col,
   Layout,
-  Menu,
-  Icon,
-  Breadcrumb,
   Card,
-  List,
   Progress,
-  Badge,
   Carousel,
-  BackTop,
   Timeline,
   Collapse
 } from 'ppfish';
@@ -24,7 +18,7 @@ import AgeChart from './components/Chart/AgeChart';
 import RegionChart from './components/Chart/RegionChart';
 import Header from './components/Header';
 import './Dashborad.less';
-import DrawerPage from './components/DrawerPage';
+import DrawerPage from '../../components/DrawerPage';
 class Dashboard extends Component {
   callback = (key) => {
     console.log(key);
@@ -328,19 +322,6 @@ class Dashboard extends Component {
       'Los Angeles battles huge wildfires.',
       'Man charged over missing wedding girl.',
     ];
-    // const source = [{
-    //   title: '访问量',
-    //   num: 
-    // }, {
-    //   title: '下载',
-    //   num: 
-    // }, {
-    //   title: '收入',
-    //   num: 
-    // }, {
-    //   title: '活跃用户',
-    //   num: 
-    // },]
     const { career = [], gender = [], age = [], region = [], wealth = [] } = chart || {};
     const style = {
       width: '100%',

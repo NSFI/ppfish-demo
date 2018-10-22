@@ -8,7 +8,6 @@ class DrawerPage extends Component {
       childShow: true,
       height: null,
     };
-
   }
   onChange = (value) => {
     this.setState({
