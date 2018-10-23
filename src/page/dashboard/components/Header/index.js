@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tooltip,Tag,Icon,Input } from 'ppfish';
+import { Tooltip, Tag, Icon, Input, Trend } from 'ppfish';
 import './index.less';
 class Header extends Component {
   constructor() {
@@ -44,6 +44,8 @@ class Header extends Component {
     const { tags, inputVisible, inputValue } = this.state;
     return (
       <div className="g-rigidDemand" >
+        
+       
         <div className="u-content" >
           <div className="u-rigidDemand-title">
             <div className="u-rigidDemand-title-top">月访问量</div>
@@ -84,23 +86,23 @@ class Header extends Component {
           <div className="u-statistical" >
             <div>
               <div className="u-description">
-                访问量
+                访问量 <Trend flag="up" reverseColor={true} >12%</Trend>
             </div>
               <div className="u-number">
-                25,992
+                25,992 
             </div>
             </div>
             <div>
               <div className="u-description">
-                下载数
+                下载数 <Trend flag="down" reverseColor={true} style={{ marginLeft: 8 }}>11%</Trend>
               </div>
               <div className="u-number">
-                13,679
+                13,679  
             </div>
             </div>
             <div>
               <div className="u-description">
-                销售额
+                销售额 <Trend flag="up" reverseColor={true} style={{ marginLeft: 8 }}>11%</Trend>
               </div>
               <div className="u-number">
                 399,399
