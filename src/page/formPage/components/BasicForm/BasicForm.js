@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Select, AutoComplete, Input, Tooltip, Icon, Col, Cascader, Button, Row, Checkbox } from 'ppfish';
+import { Form, Select, AutoComplete, Input, Icon, Col, Cascader, Button, Row, Checkbox, DatePicker, TimePicker, Slider, Radio ,Upload} from 'ppfish';
 import './BasicForm.less';
+const RangePicker = DatePicker.DateRangePicker;
 const FormItem = Form.Item;
 const Option = Select.Option;
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
 const AutoCompleteOption = AutoComplete.Option;
 const residences = [{
   value: 'zhejiang',
@@ -81,11 +84,16 @@ class App extends Component {
     }
     this.setState({ autoCompleteResult });
   }
-
+  normFile = (e) => {
+    console.log('Upload event:', e);
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  }
   render() {
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
-
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -95,6 +103,12 @@ class App extends Component {
         xs: { span: 24 },
         sm: { span: 12 },
       },
+    };
+    const config = {
+      rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+    };
+    const rangeConfig = {
+      rules: [{ type: 'array', required: true, message: 'Please select time!' }],
     };
     const tailFormItemLayout = {
       wrapperCol: {
@@ -130,10 +144,53 @@ class App extends Component {
         </div>
         <span>表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</span>
         <div className="u-form-content">
-
           <Row>
             <Col span={16} offset={4}>
               <Form onSubmit={this.handleSubmit}>
+                <FormItem
+                  {...formItemLayout}
+                  label="DatePicker"
+                >
+                  {getFieldDecorator('date-picker', config)(
+                    <DatePicker />
+                  )}
+                </FormItem>
+                <FormItem
+                  {...formItemLayout}
+                  label="Slider"
+                >
+                  {getFieldDecorator('slider')(
+                    <Slider marks={{ 0: 'A', 20: 'B', 40: 'C', 60: 'D', 80: 'E', 100: 'F' }} />
+                  )}
+                </FormItem>
+                <FormItem
+                  {...formItemLayout}
+                  label="RangePicker"
+                >
+                  {getFieldDecorator('range-time-picker', rangeConfig)(
+                    <RangePicker showTime format="yyyy-MM-DD HH:mm:ss" />
+                  )}
+                </FormItem>
+                <FormItem
+                  {...formItemLayout}
+                  label="Radio.Button"
+                >
+                  {getFieldDecorator('radio-button')(
+                    <RadioGroup>
+                      <RadioButton value="a">item 1</RadioButton>
+                      <RadioButton value="b">item 2</RadioButton>
+                      <RadioButton value="c">item 3</RadioButton>
+                    </RadioGroup>
+                  )}
+                </FormItem>
+                <FormItem
+                  {...formItemLayout}
+                  label="TimePicker"
+                >
+                  {getFieldDecorator('time-picker', config)(
+                    <TimePicker />
+                  )}
+                </FormItem>
                 <FormItem
                   {...formItemLayout}
                   label="E-mail"
@@ -144,51 +201,6 @@ class App extends Component {
                     }, {
                       required: true, message: 'Please input your E-mail!',
                     }],
-                  })(
-                    <Input />
-                  )}
-                </FormItem>
-                <FormItem
-                  {...formItemLayout}
-                  label="Password"
-                >
-                  {getFieldDecorator('password3', {
-                    rules: [{
-                      required: true, message: 'Please input your password!',
-                    }, {
-                      validator: this.validateToNextPassword,
-                    }],
-                  })(
-                    <Input type="password" />
-                  )}
-                </FormItem>
-                <FormItem
-                  {...formItemLayout}
-                  label="Confirm Password"
-                >
-                  {getFieldDecorator('confirm', {
-                    rules: [{
-                      required: true, message: 'Please confirm your password!',
-                    }, {
-                      validator: this.compareToFirstPassword,
-                    }],
-                  })(
-                    <Input type="password" onBlur={this.handleConfirmBlur} />
-                  )}
-                </FormItem>
-                <FormItem
-                  {...formItemLayout}
-                  label={(
-                    <span>
-                      Nickname&nbsp;
-              <Tooltip title="What do you want others to call you?">
-                        <Icon type="question-circle-o" />
-                      </Tooltip>
-                    </span>
-                  )}
-                >
-                  {getFieldDecorator('nickname1', {
-                    rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
                   })(
                     <Input />
                   )}
@@ -248,6 +260,25 @@ class App extends Component {
                     </Col>
                   </Row>
                 </FormItem>
+                <FormItem
+                  {...formItemLayout}
+                  label="Dragger"
+                >
+                  <div className="dropbox">
+                    {getFieldDecorator('dragger', {
+                      valuePropName: 'fileList',
+                      getValueFromEvent: this.normFile,
+                    })(
+                      <Upload.Dragger name="files" action="/upload.do">
+                        <p className="fishd-upload-drag-icon">
+                          <Icon type="inbox" />
+                        </p>
+                        <p className="fishd-upload-text">Click or drag file to this area to upload</p>
+                        <p className="fishd-upload-hint">Support for a single or bulk upload.</p>
+                      </Upload.Dragger>
+                    )}
+                  </div>
+                </FormItem>
                 <FormItem {...tailFormItemLayout}>
                   {getFieldDecorator('agreement', {
                     valuePropName: 'checked',
@@ -255,13 +286,13 @@ class App extends Component {
                     <Checkbox>I have read the <a href="">agreement</a></Checkbox>
                   )}
                 </FormItem>
+                
                 <FormItem {...tailFormItemLayout}>
                   <Button type="primary" htmlType="submit">Register</Button>
                 </FormItem>
               </Form>
             </Col>
           </Row>
-
         </div>
       </div>
     );

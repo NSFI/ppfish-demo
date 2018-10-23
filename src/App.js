@@ -46,7 +46,6 @@ class App extends Component {
       });
     }
   }
-
   render() {
     const { subDefault, opnDefault,List } = this.setDefault();
     const { collapsed } = this.state;
