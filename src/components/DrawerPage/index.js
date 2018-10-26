@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component ,Fragment} from 'react';
 import { Drawer, Tree, Select, Divider, Row, Col, Switch } from 'ppfish';
 class DrawerPage extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class DrawerPage extends Component {
   }
   render() {
     return (
-      <div >
+      <Fragment >
         {this.state.childShow && (
           <Drawer
             placement={this.state.placement}
@@ -110,7 +110,7 @@ class DrawerPage extends Component {
         >
           {this.props.children}
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

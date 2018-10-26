@@ -20,9 +20,33 @@ import Header from './components/Header';
 import './Dashborad.less';
 import DrawerPage from '../../components/DrawerPage';
 class Dashboard extends Component {
+  componentDidMount() {
+    const chart1 = this.chart1.chart.getInstance();
+    const chart2 = this.chart2.chart.getInstance();
+    const chart3 = this.chart3.chart.getInstance();
+    const chart4 = this.chart4.chart.getInstance();
+    const chart5 = this.chart5.chart.getInstance();
+    const chart6 = this.chart6.chart.getInstance();
+    const chart7 = this.chart7.getInstance();
+    const chart8 = this.chart8.getInstance();
+    const chart9 = this.chart9.getInstance();
+    
+    setTimeout(() => {
+      chart1.resize();
+      chart2.resize();
+      chart3.resize();
+      chart4.resize();
+      chart5.resize();
+      chart6.resize();
+      chart7.resize();
+      chart8.resize();
+      chart9.resize();
+    })
+  }
   callback = (key) => {
     console.log(key);
   }
+
   render() {
     const topColResponsiveProps = {
       xs: 12,
@@ -335,18 +359,18 @@ class Dashboard extends Component {
             <Header />
             <Row gutter={24} >
               <Col span={8} >
-                <Card title={'访问年龄'} className="car-box-shadow">
-                  <AgeChart data={age} seriesName={"年龄"} style={style} />
+                <Card title={'访问年龄'} className="car-box-shadow" style={{ minWidth: 280 }}>
+                  <AgeChart data={age} seriesName={"年龄"} style={style} ref={node => this.chart1 = node} />
                 </Card>
               </Col>
               <Col span={8} >
-                <Card title={'访问性别'} className="car-box-shadow">
-                  <SexChart data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
+                <Card title={'访问性别'} className="car-box-shadow" style={{ minWidth: 280 }}>
+                  <SexChart ref={node => this.chart2 = node} data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
                 </Card>
               </Col>
               <Col span={8} >
-                <Card title={'访问职业'} className="car-box-shadow">
-                  <PictorialChart data={career} style={style} />
+                <Card title={'访问职业'} className="car-box-shadow" style={{ minWidth: 280 }}>
+                  <PictorialChart ref={node => this.chart3 = node} data={career} style={style} />
                 </Card>
               </Col>
             </Row>
@@ -354,26 +378,26 @@ class Dashboard extends Component {
               <Col span={14}>
                 <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow">
                   <Carousel autoplay>
-                    <div><RegionChart data={region} style={{ width: '100%', height: '280px' }} /></div>
-                    <div><PictorialChart data={career} style={{ width: '100%', height: '280px' }} /></div>
-                    <div><RegionChart data={wealth} style={{ width: '100%', height: '280px' }} /></div>
+                    <div><RegionChart ref={node => this.chart4 = node} data={region} style={{ width: '100%', height: '280px' }} /></div>
+                    <div><PictorialChart ref={node => this.chart5 = node} data={career} style={{ width: '100%', height: '280px' }} /></div>
+                    <div><RegionChart ref={node => this.chart6 = node} data={wealth} style={{ width: '100%', height: '280px' }} /></div>
                   </Carousel>
                 </Card>
               </Col>
               <Col span={10} >
                 <Card title={'列表'} style={{ marginTop: 20 }} className="car-box-shadow">
-                  <div style={{height:'280px'}}>
-                  <Collapse accordion defaultActiveKey={['1']}>
-                    <Panel header="This is panel header 1" key="1">
-                      <p>{text}</p>
-                    </Panel>
-                    <Panel header="This is panel header 2" key="2">
-                      <p>{text}</p>
-                    </Panel>
-                    <Panel header="This is panel header 3" key="3">
-                      <p>{text}</p>
-                    </Panel>
-                  </Collapse>
+                  <div style={{ height: '280px' }}>
+                    <Collapse accordion defaultActiveKey={['1']}>
+                      <Panel header="This is panel header 1" key="1">
+                        <p>{text}</p>
+                      </Panel>
+                      <Panel header="This is panel header 2" key="2">
+                        <p>{text}</p>
+                      </Panel>
+                      <Panel header="This is panel header 3" key="3">
+                        <p>{text}</p>
+                      </Panel>
+                    </Collapse>
                   </div>
                 </Card>
               </Col>
@@ -384,21 +408,22 @@ class Dashboard extends Component {
                   <Echart
                     className="echarts"
                     option={option3}
+                    ref={node=>this.chart7=node}
                     style={{ width: '100%', height: 500 }}
                   />
                 </Col>
                 <Col span={4} >
                   <Card title="月访问数" bordered={false}>
                     同上期增长
-                  <Progress percent={50} status="active"/>
+                  <Progress percent={50} status="active" />
                   </Card>
                   <Card title="月下载数" style={{ marginTop: 10 }} bordered={false}>
                     同上期增长
-                  <Progress percent={100}/>
+                  <Progress percent={100} />
                   </Card>
                   <Card title="月收入" style={{ marginTop: 10 }} bordered={false}>
                     同上期增长
-                  <Progress percent={70} status="exception"/>
+                  <Progress percent={70} status="exception" />
                   </Card>
                 </Col>
               </Row>
@@ -415,20 +440,21 @@ class Dashboard extends Component {
                 <Echart
                   className="car-box-shadow"
                   option={option2}
+                  ref={node=>this.chart8=node}
                   style={{ width: '100%', height: 500 }}
                 />
               </Col>
             </Row>
-            {/* <Chart /> */}
             <Layout>
               <Content>
                 <Echart
                   className="car-box-shadow"
                   option={option4}
+                  ref = {node=>this.chart9=node}
                   style={{ width: '100%', height: 603 }}
                 />
               </Content>
-              <Sider width={400} style={{ background: '#fff' ,marginLeft: 20}}>
+              <Sider width={400} style={{ background: '#fff', marginLeft: 20 }}>
                 <Card title="时间线">
                   <Timeline>
                     <Timeline.Item color="green">1.3.0</Timeline.Item>

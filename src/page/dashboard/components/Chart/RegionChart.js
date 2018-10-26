@@ -139,7 +139,7 @@ export default class regionChart extends React.Component {
     const { data, ...otherProps } = this.props;
     const option = getRegionOption(data);
     return (
-      <Echart option={option} {...otherProps} />
+      <Echart ref={node => this.chart = node } option={option} {...otherProps} />
     );
   }
 }

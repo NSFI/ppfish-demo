@@ -134,7 +134,7 @@ export default class SexChart extends React.Component {
   render() {
     const {data, ...otherProps} = this.props;
     return (
-      <Echart option={sexChartFactory(data)} {...otherProps}/>
+      <Echart ref={node => this.chart = node } option={sexChartFactory(data)} {...otherProps}/>
     );
   }
 }

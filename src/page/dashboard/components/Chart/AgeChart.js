@@ -111,11 +111,19 @@ export default class PieChart extends Component {
   constructor(){
     super();
   }
+
+  // componentDidMount(){
+  //   const chart  =  this.chart.getInstance();
+  //   setTimeout(()=>{
+  //     chart.resize();
+  //   })
+  // }
+
   render() {
     const { data = [], seriesName, ...otherprops } = this.props;
     const option = getPieOption(data, seriesName);
     return (
-      <Echart option={option} {...otherprops} />
+      <Echart ref={node => this.chart = node } option={option} {...otherprops} />
     );
   }
 }

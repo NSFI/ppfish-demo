@@ -101,7 +101,7 @@ export default class PictorialChart extends React.Component {
   render() {
     const {data, ...otherProps} = this.props;
     return (
-      <Echart option={pictorialBarChartFactory(data)} {...otherProps}/>
+      <Echart ref={node => this.chart = node } option={pictorialBarChartFactory(data)} {...otherProps}/>
     );
   }
 }

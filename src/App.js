@@ -196,6 +196,22 @@ class App extends Component {
                 </span>
               </Menu.Item>
             </SubMenu>
+            <SubMenu key="resultPage" title={<span><Icon type="file-line" />
+              {
+                !collapsed ? '结果页' : null
+              }
+            </span>}>
+              <Menu.Item key="resultPage-success">
+                <span>
+                  <Link to="/resultPage/success">成功页</Link>
+                </span>
+              </Menu.Item>
+              <Menu.Item key="resultPage-fail">
+                <span>
+                  <Link to="/resultPage/fail">失败页</Link>
+                </span>
+              </Menu.Item>
+            </SubMenu>
           </Menu>
         </Sider>
         <Layout>
@@ -246,15 +262,13 @@ class App extends Component {
               </Col>
             </Row>
           </Header>
-          <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280 }}>
-            <div>
+          <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280}}>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/homePage/home" component={Dashboard} />
               <FormPage />
               <ListPage />
               <DetailPage />
               <SettingPage />
-            </div>
           </Content>
         </Layout>
       </Layout>
