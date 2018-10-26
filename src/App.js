@@ -6,6 +6,7 @@ import DetailPage from './page/detailPage/routes.js';
 import FormPage from './page/formPage/routes.js';
 import ListPage from './page/listPage/routes.js';
 import SettingPage from './page/settingPage/route';
+import ResultPage from './page/resultPage/route';
 import './App.css'
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -17,7 +18,7 @@ class App extends Component {
       collapsed: false,
       openKeys: []
     }
-    this.rootSubmenuKeys = ['homePage', 'formPage', 'listPage', 'detailPage'];
+    this.rootSubmenuKeys = ['homePage', 'formPage', 'listPage', 'detailPage','resultPage','settingPage'];
   }
   componentWillMount(){
     notification.open({
@@ -269,6 +270,7 @@ class App extends Component {
               <ListPage />
               <DetailPage />
               <SettingPage />
+              <ResultPage/>
           </Content>
         </Layout>
       </Layout>
