@@ -44,8 +44,6 @@ class Header extends Component {
     const { tags, inputVisible, inputValue } = this.state;
     return (
       <div className="g-rigidDemand" >
-        
-       
         <div className="u-content" >
           <div className="u-rigidDemand-title">
             <div className="u-rigidDemand-title-top">月访问量</div>
@@ -87,9 +85,9 @@ class Header extends Component {
             <div>
               <div className="u-description">
                 访问量 <Trend flag="up" reverseColor={true} >12%</Trend>
-            </div>
+              </div>
               <div className="u-number">
-                25,992 
+                25,992
             </div>
             </div>
             <div>
@@ -97,7 +95,7 @@ class Header extends Component {
                 下载数 <Trend flag="down" reverseColor={true} style={{ marginLeft: 8 }}>11%</Trend>
               </div>
               <div className="u-number">
-                13,679  
+                13,679
             </div>
             </div>
             <div>

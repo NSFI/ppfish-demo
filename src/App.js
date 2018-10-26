@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar, Breadcrumb,Divider } from 'ppfish';
+import { Layout, Menu, Icon, Badge, Row, Col, Dropdown, Popover, Avatar, Breadcrumb, Divider,notification } from 'ppfish';
 import Dashboard from './page/dashboard/Dashborad.js';
 import DetailPage from './page/detailPage/routes.js';
 import FormPage from './page/formPage/routes.js';
 import ListPage from './page/listPage/routes.js';
+import SettingPage from './page/settingPage/route';
 import './App.css'
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -17,6 +18,12 @@ class App extends Component {
       openKeys: []
     }
     this.rootSubmenuKeys = ['homePage', 'formPage', 'listPage', 'detailPage'];
+  }
+  componentWillMount(){
+    notification.open({
+      message: '想快速上手，去看文档吧',
+      description: <p>点击<a href="https://nsfi.github.io/ppfish-components/#/components/spin">Fish Design 文档</a>快速查看</p>,
+    });
   }
   toggle = () => {
     this.setState({
@@ -33,7 +40,7 @@ class App extends Component {
     return {
       subDefault: pathList[1],
       opnDefault: pathList[2],
-      List:pathList
+      List: pathList
     }
   }
   onOpenChange = (openKeys) => {
@@ -46,8 +53,11 @@ class App extends Component {
       });
     }
   }
+  logout =()=>{
+    this.props.history.push('/login/')
+  }
   render() {
-    const { subDefault, opnDefault,List } = this.setDefault();
+    const { subDefault, opnDefault, List } = this.setDefault();
     const { collapsed } = this.state;
     const defaultPros = !collapsed ? { openKeys: this.state.openKeys } : {};
     const menu = (
@@ -57,10 +67,10 @@ class App extends Component {
         </Menu.Item>
         <Menu.Item>
           <a target="_blank" rel="noopener noreferrer" href="http://www.163.com/">个人设置</a>
-          <div style={{borderTop:'1px solid #e8eaed',marginTop:5}}></div>
+          <div style={{ borderTop: '1px solid #e8eaed', marginTop: 5 }}></div>
         </Menu.Item>
         <Menu.Item>
-          <a target="_blank" rel="noopener noreferrer" href="http://email.163.com/">退出登陆</a>
+          <span target="_blank" rel="noopener noreferrer" onClick={this.logout}>退出登陆</span>
         </Menu.Item>
       </Menu>
     );
@@ -76,8 +86,10 @@ class App extends Component {
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
-          style={{whiteSpace: 'nowrap',
-            overflow: 'hidden'}}
+          style={{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden'
+          }}
         >
           <i className="logo" />
           {
@@ -96,11 +108,11 @@ class App extends Component {
             {...defaultPros}
           >
             <Menu.Item key="homePage-home">
-              <Icon type="home-line"/>
+              <Icon type="home-line" />
               <span>
                 <Link to="/homePage/home"> {
-                !collapsed ? '首页' : null
-              }</Link>
+                  !collapsed ? '首页' : null
+                }</Link>
               </span>
             </Menu.Item>
             <SubMenu key="formPage" title={<span><Icon type="demo-file" />
@@ -168,6 +180,22 @@ class App extends Component {
                 </span>
               </Menu.Item>
             </SubMenu>
+            <SubMenu key="settingPage" title={<span><Icon type="file-line" />
+              {
+                !collapsed ? '个人页' : null
+              }
+            </span>}>
+              <Menu.Item key="settingPage-center">
+                <span>
+                  <Link to="/settingPage/center">个人中心</Link>
+                </span>
+              </Menu.Item>
+              <Menu.Item key="settingPage-settings">
+                <span>
+                  <Link to="/settingPage/settings/basic">个人设置</Link>
+                </span>
+              </Menu.Item>
+            </SubMenu>
           </Menu>
         </Sider>
         <Layout>
@@ -179,9 +207,9 @@ class App extends Component {
                   type={this.state.collapsed ? 'menu-line' : 'menu-line'}
                   onClick={this.toggle}
                 />
-                <Breadcrumb style={{display:'inline-block',marginLeft:20}}>
-                  {List.map((it,i)=> {
-                    if(i>0){
+                <Breadcrumb style={{ display: 'inline-block', marginLeft: 20 }}>
+                  {List.map((it, i) => {
+                    if (i > 0) {
                       return (<Breadcrumb.Item key={i}>{it}</Breadcrumb.Item>)
                     }
                   })}
@@ -225,6 +253,7 @@ class App extends Component {
               <FormPage />
               <ListPage />
               <DetailPage />
+              <SettingPage />
             </div>
           </Content>
         </Layout>

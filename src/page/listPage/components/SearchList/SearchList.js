@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col, Button } from 'ppfish';
+import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col, Button,LoadMore } from 'ppfish';
 import StandardFormRow from './StandardFormRow';
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -86,15 +86,7 @@ class SearchList extends Component {
     const loadMore =
       list.length > 0 ? (
         <div style={{ textAlign: 'center', marginTop: 16 }}>
-          <Button onClick={this.fetchMore} style={{ paddingLeft: 48, paddingRight: 48 }}>
-            {loading ? (
-              <span>
-                <Icon type="loading" /> 加载中...
-            </span>
-            ) : (
-                '加载更多'
-              )}
-          </Button>
+          <LoadMore onLoadMore={this.loadmore}/>
         </div>
       ) : null;
     return (

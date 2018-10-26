@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import { Button, Row, Col } from 'ppfish';
-import { browserHistory } from 'react-router';
 
 class Step3 extends React.PureComponent {
   render() {
-    console.log(this.props)
     const onFinish = () => {
       this.props.history.push('/formPage/step/step1');
     };

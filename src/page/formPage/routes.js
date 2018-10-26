@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import BasicForm from './components/BasicForm';
 import AdvancedForm from './components/AdvancedForm';
-import StepForm from './components/StepForm';
+import StepForm from './components/StepForm/StepForm';
 import Step1 from './components/StepForm/Step1';
 import Step2 from './components/StepForm/Step2';
 import Step3 from './components/StepForm/Step3';
