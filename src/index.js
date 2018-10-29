@@ -9,7 +9,7 @@ ReactDOM.render(
   <Router>
     <Route render={props => {
       console.log(props)
-      if (props.location.pathname === '/login/' || props.location.pathname === '/login') {
+      if (props.location.pathname === '/login/' || props.location.pathname === '/login'||props.location.pathname === '/') {
         return (
           <Login {...props} />
         )

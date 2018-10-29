@@ -127,10 +127,10 @@ class Center extends PureComponent {
           <div style={{ paddingLeft: 30, marginTop: 20 }}>
             <h4>标签</h4>
             <div>
-              <Tag color="#f50">#f50</Tag>
-              <Tag color="#2db7f5">#2db7f5</Tag>
-              <Tag color="#87d068">#87d068</Tag>
-              <Tag color="#108ee9">#108ee9</Tag>
+              <Tag color="#f50">大众脸</Tag>
+              <Tag color="#2db7f5">一般水平</Tag>
+              <Tag color="#87d068">IT</Tag>
+              <Tag color="#108ee9">男</Tag>
             </div>
           </div>
         </Sider>

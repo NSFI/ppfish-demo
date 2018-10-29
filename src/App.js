@@ -264,7 +264,6 @@ class App extends Component {
             </Row>
           </Header>
           <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280}}>
-              <Route exact path="/" component={Dashboard} />
               <Route exact path="/homePage/home" component={Dashboard} />
               <FormPage />
               <ListPage />
