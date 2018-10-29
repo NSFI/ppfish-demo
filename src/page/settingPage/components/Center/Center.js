@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 // import { Input, Form, Select, Button, Upload, message, Skeleton, ImageLoader, Layout,List } from 'ppfish';
-import { Layout, Icon, Tag, Tabs, Timeline, RichEditor, VideoViewer,Button } from 'ppfish';
+import { Layout, Icon, Tag, Tabs, Timeline, RichEditor, VideoViewer,Button,AudioPlayer } from 'ppfish';
 import './Center.less'
 const { Content, Sider } = Layout;
 const TabPane = Tabs.TabPane;
@@ -32,6 +32,7 @@ class Center extends PureComponent {
         /><Button style={{marginTop:5}} type="primary">修改</Button></div>, key: '2'
       },
       { title: '历史视频', content: 'Content of Tab 3', key: '3', closable: false },
+      { title: '历史录音', content: '', key: '4', closable: false },
     ];
     this.state = {
       activeKey: panes[0].key,
@@ -161,7 +162,16 @@ class Center extends PureComponent {
                     </VideoViewer>
                   </TabPane>
                 )
-              } else {
+              } else if(pane.key === '4'){
+                return (
+                  <TabPane tab={pane.title} key={pane.key}>
+                  <AudioPlayer
+                    src="https://ysf.nosdn.127.net/26952087D69B79839F17040A5DC2E775.wav"
+                    title="这是一个demo"
+                  />
+                  </TabPane>
+                )
+              }else {
                 return (
                   <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>{pane.content}</TabPane>
                 )

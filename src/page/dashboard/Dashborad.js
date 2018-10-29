@@ -8,7 +8,8 @@ import {
   Progress,
   Carousel,
   Timeline,
-  Collapse
+  Collapse,
+  BackTop
 } from 'ppfish';
 const { Content, Sider } = Layout;
 const Panel = Collapse.Panel;
@@ -356,6 +357,8 @@ class Dashboard extends Component {
       <div>
         <DrawerPage>
           <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
+          <BackTop target={() => document.querySelector('.demo-layout')}/>
+            
             <Header />
             <Row gutter={24} >
               <Col span={8} >

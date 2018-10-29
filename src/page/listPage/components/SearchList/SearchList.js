@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col, Button,LoadMore } from 'ppfish';
+import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col,LoadMore,BackTop } from 'ppfish';
 import StandardFormRow from './StandardFormRow';
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -190,6 +190,7 @@ class SearchList extends Component {
             )}
           />
         </Card>
+        <BackTop target={() => document.querySelector('.demo-layout')} />
       </Fragment>
     )
   }

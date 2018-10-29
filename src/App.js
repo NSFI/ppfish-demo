@@ -215,7 +215,7 @@ class App extends Component {
             </SubMenu>
           </Menu>
         </Sider>
-        <Layout>
+        <Layout className="demo-layout">
           <Header style={{ background: '#fff', padding: 0 }} className="demo-header">
             <Row gutter={24}>
               <Col span={20}>

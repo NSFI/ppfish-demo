@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Badge, Table, Divider, Icon, Row, Col, Steps, Popover,Tabs } from 'ppfish';
+import { Card, Badge, Table, Divider, Icon, Row, Col, Steps, Popover,Tabs ,BackTop} from 'ppfish';
 import './AdvancedDetail.less';
 const TabPane = Tabs.TabPane;
 const { Step } = Steps;
@@ -355,6 +355,7 @@ class AdvancedDetail extends Component {
             </TabPane>
           </Tabs>
         </div>
+        <BackTop target={() => document.querySelector('.demo-layout')} />
       </Fragment>
     )
   }
