@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Select, AutoComplete, Input, Tooltip, Icon, Cascader, Row, Checkbox, Col, Button, Divider, Card, RangePicker } from 'ppfish';
+import { Form, Select, AutoComplete, Input, Tooltip, Icon, Cascader, Row, Checkbox, Col, Button, Divider, Card, RangePicker,Modal } from 'ppfish';
 import './AdvancedForm.less';
 import TableForm from './TableForm';
 const Option = Select.Option;
@@ -50,11 +50,24 @@ class App extends Component {
       autoCompleteResult: [],
     };
   }
+  showConfirm=() => {
+    const confirm = Modal.confirm;
+    confirm({
+      title: 'Do you want to submit this file?',
+      content: 'Some descriptions',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        
       }
     });
   }
@@ -65,7 +78,7 @@ class App extends Component {
     } = this.props;
     validateFieldsAndScroll((error, values) => {
       if (!error) {
-        console.log(values)
+        this.showConfirm();
       }
     });
   };

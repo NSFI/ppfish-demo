@@ -169,6 +169,7 @@ class Center extends PureComponent {
                     src="https://ysf.nosdn.127.net/26952087D69B79839F17040A5DC2E775.wav"
                     title="这是一个demo"
                   />
+                  <Button type="primary" style={{marginTop:20}}>Play</Button>
                   </TabPane>
                 )
               }else {
