@@ -31,6 +31,7 @@ class Dashboard extends Component {
     const chart7 = this.chart7.getInstance();
     const chart8 = this.chart8.getInstance();
     const chart9 = this.chart9.getInstance();
+    const chart10 = this.chart10.getInstance();
     
     setTimeout(() => {
       chart1.resize();
@@ -42,6 +43,7 @@ class Dashboard extends Component {
       chart7.resize();
       chart8.resize();
       chart9.resize();
+      chart10.resize();
     })
   }
   callback = (key) => {
@@ -358,7 +360,6 @@ class Dashboard extends Component {
         <DrawerPage>
           <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
           <BackTop target={() => document.querySelector('.demo-layout')}/>
-            
             <Header />
             <Row gutter={24} >
               <Col span={8} >
@@ -436,6 +437,7 @@ class Dashboard extends Component {
                 <Echart
                   className="car-box-shadow"
                   option={option}
+                  ref={node=>this.chart10=node}
                   style={{ width: '100%', height: 500 }}
                 />
               </Col>

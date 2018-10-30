@@ -221,7 +221,7 @@ class App extends Component {
               <Col span={20}>
                 <Icon
                   className="trigger"
-                  type={this.state.collapsed ? 'menu-line' : 'menu-line'}
+                  type={this.state.collapsed ? 'menu-line-right' : 'menu-line'}
                   onClick={this.toggle}
                 />
                 <Breadcrumb style={{ display: 'inline-block', marginLeft: 20 }}>

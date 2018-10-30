@@ -79,7 +79,7 @@ class SearchList extends Component {
           <Avatar src={avatar} size="small" />
           <a href={href}>{owner}</a> 发布在
           <a href={href}>{href}</a>
-          <em>2018-10-01</em>
+          <em style={{marginLeft:5}}>2018-10-01</em>
         </div>
       </div>
     );
@@ -113,7 +113,7 @@ class SearchList extends Component {
                         ))}
                       </Select>
                     )}
-                    <a className="selfTrigger" onClick={this.setOwner}>
+                    <a className="selfTrigger" onClick={this.setOwner} style={{marginLeft:10}}>
                       只看自己的
                     </a>
                   </FormItem>
