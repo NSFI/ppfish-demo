@@ -434,29 +434,31 @@ class Dashboard extends Component {
             </Card>
             <Row gutter={24} style={{ marginTop: 20 }}>
               <Col {...topColResponsiveProps} >
+              
                 <Echart
                   className="car-box-shadow"
                   option={option}
                   ref={node=>this.chart10=node}
-                  style={{ width: '100%', height: 500 }}
+                  style={{ width: '100%', height: 500,padding:20,backgroundColor:"#fff" }}
                 />
+              
               </Col>
-              <Col {...topColResponsiveProps}>
+              <Col {...topColResponsiveProps} >
                 <Echart
                   className="car-box-shadow"
                   option={option2}
                   ref={node=>this.chart8=node}
-                  style={{ width: '100%', height: 500 }}
+                  style={{ width: '100%', height: 500 ,padding:20,backgroundColor:"#fff"}}
                 />
               </Col>
             </Row>
             <Layout>
-              <Content>
+              <Content >
                 <Echart
                   className="car-box-shadow"
                   option={option4}
                   ref = {node=>this.chart9=node}
-                  style={{ width: '100%', height: 603 }}
+                  style={{ width: '100%', height: 603,padding:20,backgroundColor:"#fff" }}
                 />
               </Content>
               <Sider width={400} style={{ background: '#fff', marginLeft: 20 }}>
