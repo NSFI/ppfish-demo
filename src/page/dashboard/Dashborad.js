@@ -90,6 +90,10 @@ class Dashboard extends Component {
         label: <strong>强</strong>,
       },
     };
+    const marks2 = {
+      26: '白领',
+      37: '金领',
+    };
     const topColResponsiveProps = {
       xs: 12,
       sm: 12,
@@ -428,8 +432,11 @@ class Dashboard extends Component {
                 {/* </Card> */}
               </Col>
               <Col span={10} >
-                <div style={{height:'280px',backgroundColor:'#fff',paddingTop: 100,paddingLeft:20,paddingRight:20}}>
+                <div style={{height:'280px',backgroundColor:'#fff',padding:20}}>
+                  <div style={{lineHeight:'32px'}}>地域强度</div>
                    <Slider marks={marks} included={false} defaultValue={37}/>
+                   <div style={{lineHeight:'32px'}}>职业</div>
+                   <Slider marks={marks2} included={false} defaultValue={37}/>
                 </div>
               </Col>
             </Row>
