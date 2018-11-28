@@ -4,15 +4,15 @@ import {
   Row,
   Col,
   Layout,
-  Card,
+  // Card,
   Progress,
   Carousel,
   Timeline,
   Collapse,
-  BackTop
+  BackTop,
+  Checkbox,
+  Slider
 } from 'ppfish';
-const { Content, Sider } = Layout;
-const Panel = Collapse.Panel;
 import SexChart from './components/Chart/SexChart';
 import PictorialChart from './components/Chart/PictorialChart';
 import AgeChart from './components/Chart/AgeChart';
@@ -20,7 +20,19 @@ import RegionChart from './components/Chart/RegionChart';
 import Header from './components/Header';
 import './Dashborad.less';
 import DrawerPage from '../../components/DrawerPage';
+const { Content, Sider } = Layout;
+const Panel = Collapse.Panel;
+const CheckboxGroup = Checkbox.Group;
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkedList: ['Apple', 'Orange'],
+      plainOptions: ['Apple', 'Pear', 'Orange'],
+      indeterminate: true,
+      checkAll: false,
+    };
+  }
   componentDidMount() {
     const chart1 = this.chart1.chart.getInstance();
     const chart2 = this.chart2.chart.getInstance();
@@ -32,7 +44,7 @@ class Dashboard extends Component {
     const chart8 = this.chart8.getInstance();
     const chart9 = this.chart9.getInstance();
     const chart10 = this.chart10.getInstance();
-    
+
     setTimeout(() => {
       chart1.resize();
       chart2.resize();
@@ -50,7 +62,34 @@ class Dashboard extends Component {
     console.log(key);
   }
 
+  onChange = (checkedList) => {
+    this.setState({
+      checkedList,
+      indeterminate: !!checkedList.length && (checkedList.length < this.state.plainOptions.length),
+      checkAll: checkedList.length === this.state.plainOptions.length,
+    });
+  };
+
+  onCheckAllChange = (e) => {
+    this.setState({
+      checkedList: e.target.checked ? this.state.plainOptions : [],
+      indeterminate: false,
+      checkAll: e.target.checked,
+    });
+  }
+
   render() {
+    const marks = {
+      0: '微弱',
+      26: '弱',
+      37: '中',
+      70: {
+        style: {
+          color: '#f50',
+        },
+        label: <strong>强</strong>,
+      },
+    };
     const topColResponsiveProps = {
       xs: 12,
       sm: 12,
@@ -359,96 +398,67 @@ class Dashboard extends Component {
       <div>
         <DrawerPage>
           <Content style={{ background: '#f0f2f5', margin: 0, minHeight: 280 }}>
-          <BackTop target={() => document.querySelector('.demo-layout')}/>
+            <BackTop target={() => document.querySelector('.demo-layout')} />
             <Header />
-            <Row gutter={24} >
+            <Row gutter={24} style={{ marginBottom: 16 }}>
               <Col span={8} >
-                <Card title={'访问年龄'} className="car-box-shadow" style={{ minWidth: 280 }}>
-                  <AgeChart data={age} seriesName={"年龄"} style={style} ref={node => this.chart1 = node} />
-                </Card>
+                {/* <Card title={'访问年龄'} className="car-box-shadow" style={{ minWidth: 280 }}> */}
+                <AgeChart data={age} seriesName={"年龄"} style={style} ref={node => this.chart1 = node} />
+                {/* </Card> */}
               </Col>
               <Col span={8} >
-                <Card title={'访问性别'} className="car-box-shadow" style={{ minWidth: 280 }}>
-                  <SexChart ref={node => this.chart2 = node} data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
-                </Card>
+                {/* <Card title={'访问性别'} className="car-box-shadow" style={{ minWidth: 280 }}> */}
+                <SexChart ref={node => this.chart2 = node} data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
+                {/* </Card> */}
               </Col>
               <Col span={8} >
-                <Card title={'访问职业'} className="car-box-shadow" style={{ minWidth: 280 }}>
-                  <PictorialChart ref={node => this.chart3 = node} data={career} style={style} />
-                </Card>
+                {/* <Card title={'访问职业'} className="car-box-shadow" style={{ minWidth: 280 }}> */}
+                <PictorialChart ref={node => this.chart3 = node} data={career} style={style} />
+                {/* </Card> */}
+              </Col>
+            </Row>
+            <Row gutter={24} style={{ marginBottom: 16 }}>
+              <Col span={14}>
+                {/* <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow"> */}
+                <Carousel autoplay>
+                  <div><RegionChart ref={node => this.chart4 = node} data={region} style={{ width: '100%', height: '280px' }} /></div>
+                  <div><PictorialChart ref={node => this.chart5 = node} data={career} style={{ width: '100%', height: '280px' }} /></div>
+                  <div><RegionChart ref={node => this.chart6 = node} data={wealth} style={{ width: '100%', height: '280px' }} /></div>
+                </Carousel>
+                {/* </Card> */}
+              </Col>
+              <Col span={10} >
+                <div style={{height:'280px',backgroundColor:'#fff',paddingTop: 100,paddingLeft:20,paddingRight:20}}>
+                   <Slider marks={marks} included={false} defaultValue={37}/>
+                </div>
               </Col>
             </Row>
             <Row gutter={24}>
-              <Col span={14}>
-                <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow">
-                  <Carousel autoplay>
-                    <div><RegionChart ref={node => this.chart4 = node} data={region} style={{ width: '100%', height: '280px' }} /></div>
-                    <div><PictorialChart ref={node => this.chart5 = node} data={career} style={{ width: '100%', height: '280px' }} /></div>
-                    <div><RegionChart ref={node => this.chart6 = node} data={wealth} style={{ width: '100%', height: '280px' }} /></div>
-                  </Carousel>
-                </Card>
-              </Col>
-              <Col span={10} >
-                <Card title={'列表'} style={{ marginTop: 20 }} className="car-box-shadow">
-                  <div style={{ height: '280px' }}>
-                    <Collapse accordion defaultActiveKey={['1']}>
-                      <Panel header="This is panel header 1" key="1">
-                        <p>{text}</p>
-                      </Panel>
-                      <Panel header="This is panel header 2" key="2">
-                        <p>{text}</p>
-                      </Panel>
-                      <Panel header="This is panel header 3" key="3">
-                        <p>{text}</p>
-                      </Panel>
-                    </Collapse>
-                  </div>
-                </Card>
+              <Col span={24}>
+                <Echart
+                  className="echarts"
+                  option={option3}
+                  ref={node => this.chart7 = node}
+                  style={{ width: '100%', height: 500 }}
+                />
               </Col>
             </Row>
-            <Card title={'访问量'} style={{ marginTop: 20 }} className="car-box-shadow">
-              <Row gutter={24}>
-                <Col span={20}>
-                  <Echart
-                    className="echarts"
-                    option={option3}
-                    ref={node=>this.chart7=node}
-                    style={{ width: '100%', height: 500 }}
-                  />
-                </Col>
-                <Col span={4} >
-                  <Card title="月访问数" bordered={false}>
-                    同上期增长
-                  <Progress percent={50} status="active" />
-                  </Card>
-                  <Card title="月下载数" style={{ marginTop: 10 }} bordered={false}>
-                    同上期增长
-                  <Progress percent={100} />
-                  </Card>
-                  <Card title="月收入" style={{ marginTop: 10 }} bordered={false}>
-                    同上期增长
-                  <Progress percent={70} status="exception" />
-                  </Card>
-                </Col>
-              </Row>
-            </Card>
             <Row gutter={24} style={{ marginTop: 20 }}>
               <Col {...topColResponsiveProps} >
-              
                 <Echart
                   className="car-box-shadow"
                   option={option}
-                  ref={node=>this.chart10=node}
-                  style={{ width: '100%', height: 500,padding:20,backgroundColor:"#fff" }}
+                  ref={node => this.chart10 = node}
+                  style={{ width: '100%', height: 500, padding: 20, backgroundColor: "#fff" }}
                 />
-              
+
               </Col>
               <Col {...topColResponsiveProps} >
                 <Echart
                   className="car-box-shadow"
                   option={option2}
-                  ref={node=>this.chart8=node}
-                  style={{ width: '100%', height: 500 ,padding:20,backgroundColor:"#fff"}}
+                  ref={node => this.chart8 = node}
+                  style={{ width: '100%', height: 500, padding: 20, backgroundColor: "#fff" }}
                 />
               </Col>
             </Row>
@@ -457,26 +467,26 @@ class Dashboard extends Component {
                 <Echart
                   className="car-box-shadow"
                   option={option4}
-                  ref = {node=>this.chart9=node}
-                  style={{ width: '100%', height: 603,padding:20,backgroundColor:"#fff" }}
+                  ref={node => this.chart9 = node}
+                  style={{ width: '100%', height: 603, padding: 20, backgroundColor: "#fff" }}
                 />
               </Content>
-              <Sider width={400} style={{ background: '#fff', marginLeft: 20 }}>
-                <Card title="时间线">
-                  <Timeline>
-                    <Timeline.Item color="green">1.3.0</Timeline.Item>
-                    <Timeline.Item color="green">2018-08-01</Timeline.Item>
-                    <Timeline.Item color="red">
-                      <p>第一个正式版本，发布了图表、选择器、加载更多、树选择、分页、文字提示、气泡卡片、标签页、导航菜单、对话框、多选框、单选框、按钮、图标、加载中 这些组件。</p>
-                      <p>发布了Fish Design官网和相关文档。</p>
-                    </Timeline.Item>
-                    <Timeline.Item color="green">1.3.2</Timeline.Item>
-                    <Timeline.Item color="green">2018-09-29</Timeline.Item>
-                    <Timeline.Item>
-                      <p>发布了时间选择框、日期选择框、图片查看器、富文本编辑器、列表、全局提示框、开关、输入框、面包屑、表单、布局、上传、级联选择、进度条、抽屉、折叠面板、步骤条、徽标、树形控件 这些组件。</p>
-                    </Timeline.Item>
-                  </Timeline>
-                </Card>
+              <Sider width={400} style={{ background: '#fff', marginLeft: 20 ,padding:20}}>
+                {/* <Card title="时间线"> */}
+                <Timeline>
+                  <Timeline.Item color="green">1.3.0</Timeline.Item>
+                  <Timeline.Item color="green">2018-08-01</Timeline.Item>
+                  <Timeline.Item color="red">
+                    <p>第一个正式版本，发布了图表、选择器、加载更多、树选择、分页、文字提示、气泡卡片、标签页、导航菜单、对话框、多选框、单选框、按钮、图标、加载中 这些组件。</p>
+                    <p>发布了Fish Design官网和相关文档。</p>
+                  </Timeline.Item>
+                  <Timeline.Item color="green">1.3.2</Timeline.Item>
+                  <Timeline.Item color="green">2018-09-29</Timeline.Item>
+                  <Timeline.Item>
+                    <p>发布了时间选择框、日期选择框、图片查看器、富文本编辑器、列表、全局提示框、开关、输入框、面包屑、表单、布局、上传、级联选择、进度条、抽屉、折叠面板、步骤条、徽标、树形控件 这些组件。</p>
+                  </Timeline.Item>
+                </Timeline>
+                {/* </Card> */}
               </Sider>
             </Layout>
           </Content>

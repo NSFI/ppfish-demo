@@ -261,7 +261,7 @@ class TableList extends Component {
     });
     return (
       <div>
-        <Card bordered={false}>
+        {/* <Card bordered={false}> */}
           <div className="tableList">
             <div className="tableListForm">{this.renderForm()}</div>
             <div className="tableListOperator">
@@ -287,7 +287,7 @@ class TableList extends Component {
               pagination={{ current: 0, pageSize: 50, total: 100 }}
               rowKey="key" />
           </div>
-        </Card>
+        {/* </Card> */}
       </div>
     )
   }

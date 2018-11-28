@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col,LoadMore,BackTop } from 'ppfish';
+import { Form, Select, List, Tag, Icon, Avatar, Row, Col,LoadMore,BackTop } from 'ppfish';
 import StandardFormRow from './StandardFormRow';
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -91,7 +91,7 @@ class SearchList extends Component {
       ) : null;
     return (
       <Fragment>
-        <Card bordered={false}>
+        {/* <Card bordered={false}> */}
           <Form layout="inline">
             <StandardFormRow title="owner" grid>
               <Row>
@@ -149,12 +149,12 @@ class SearchList extends Component {
               </Row>
             </StandardFormRow>
           </Form>
-        </Card>
-        <Card
+        {/* </Card> */}
+        {/* <Card
           style={{ marginTop: 24 }}
           bordered={false}
           bodyStyle={{ padding: '8px 32px 32px 32px' }}
-        >
+        > */}
           <List
             size="large"
             rowKey="id"
@@ -189,7 +189,7 @@ class SearchList extends Component {
               </List.Item>
             )}
           />
-        </Card>
+        {/* </Card> */}
         <BackTop target={() => document.querySelector('.demo-layout')} />
       </Fragment>
     )

@@ -89,8 +89,10 @@ class App extends Component {
           collapsed={this.state.collapsed}
           style={{
             whiteSpace: 'nowrap',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
+
+          width={200}
         >
           <i className="logo" />
           {
@@ -147,11 +149,6 @@ class App extends Component {
                   <Link to="/listPage/basic">
                     基础列表
                   </Link>
-                </span>
-              </Menu.Item>
-              <Menu.Item key="listPage-card">
-                <span>
-                  <Link to="/listPage/card">卡片列表</Link>
                 </span>
               </Menu.Item>
               <Menu.Item key="listPage-search">

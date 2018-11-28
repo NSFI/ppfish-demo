@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import {
   List,
-  Card,
+  // Card,
   Row,
   Col,
   Radio,
@@ -215,7 +215,7 @@ class BasicList extends Component {
     );
     return (
       <div className="standardList">
-        <Card bordered={false}>
+        {/* <Card bordered={false}> */}
           <Row>
             <Col sm={8} xs={24}>
               <Info title="我的待办" value="8个任务" bordered />
@@ -227,15 +227,15 @@ class BasicList extends Component {
               <Info title="本周完成任务数" value="24个任务" />
             </Col>
           </Row>
-        </Card>
-        <Card
+        {/* </Card> */}
+        {/* <Card
           className="listCard"
           bordered={false}
           title="标准列表"
           style={{ marginTop: 24 }}
           bodyStyle={{ padding: '0 32px 40px 32px' }}
           extra={extraContent}
-        >
+        > */}
           <Button
             type="dashed"
             style={{ width: '100%', marginBottom: 8 }}
@@ -277,7 +277,7 @@ class BasicList extends Component {
               </List.Item>
             )}
           />
-        </Card>
+        {/* </Card> */}
         <Modal
           title={done ? null : `任务${current ? '编辑' : '添加'}`}
           className="standardListForm"

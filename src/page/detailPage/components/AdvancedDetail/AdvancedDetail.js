@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, Badge, Table, Divider, Icon, Row, Col, Steps, Popover,Tabs ,BackTop} from 'ppfish';
+import {  Badge, Table, Divider, Icon, Row, Col, Steps, Popover,Tabs ,BackTop} from 'ppfish';
 import './AdvancedDetail.less';
 const TabPane = Tabs.TabPane;
 const { Step } = Steps;
@@ -251,15 +251,15 @@ class AdvancedDetail extends Component {
     ]
     return (
       <Fragment>
-        <Card title="流程进度" style={{ marginBottom: 24 }} bordered={false}>
+        {/* <Card title="流程进度" style={{ marginBottom: 24 }} bordered={false}> */}
           <Steps direction={'horizontal'} progressDot={customDot} current={1}>
             <Step title="创建项目" description={desc1} />
             <Step title="部门初审" description={desc2} />
             <Step title="财务复核" />
             <Step title="完成" />
           </Steps>
-        </Card>
-        <Card title="用户信息">
+        {/* </Card> */}
+        {/* <Card title="用户信息"> */}
           <Row type="flex" justify="space-around">
             <Col span={6}>用户姓名 : 付小小</Col>
             <Col span={6}>会员卡号 : 32943898021309809423</Col>
@@ -281,7 +281,7 @@ class AdvancedDetail extends Component {
             <Col span={6}>该数据更新时间:	2017-08-08</Col>
             <Col span={6}></Col>
           </Row>
-        </Card>
+        {/* </Card> */}
         <div className="u-detail-top">
           {
             groupNew(data1).map((r, k) =>

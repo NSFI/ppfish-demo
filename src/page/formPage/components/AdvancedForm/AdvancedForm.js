@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Select, AutoComplete, Input, Tooltip, Icon, Cascader, Row, Checkbox, Col, Button, Divider, Card, RangePicker,Modal } from 'ppfish';
+import { Form, Select, AutoComplete, Input, Tooltip, Icon, Cascader, Row, Checkbox, Col, Button, Divider, RangePicker,Modal } from 'ppfish';
 import './AdvancedForm.less';
 import TableForm from './TableForm';
 const Option = Select.Option;
@@ -125,7 +125,7 @@ class App extends Component {
         </div>
         <p>高级表单常见于一次性输入和提交大批量数据的场景。</p>
         <div className="u-form-content">
-          <Card title="仓库管理" bordered={false}>
+          {/* <Card title="仓库管理" bordered={false}> */}
             <Form layout="vertical" hideRequiredMark>
               <Row gutter={16}>
                 <Col lg={6} md={12} sm={24}>
@@ -191,8 +191,8 @@ class App extends Component {
                 </Col>
               </Row>
             </Form>
-          </Card>
-          <Card title="任务管理" bordered={false} style={{ marginTop: 24 }}>
+          {/* </Card> */}
+          {/* <Card title="任务管理" bordered={false} style={{ marginTop: 24 }}> */}
             <Form layout="vertical" hideRequiredMark>
               <Row gutter={16}>
                 <Col lg={6} md={12} sm={24}>
@@ -249,12 +249,12 @@ class App extends Component {
                 </Col>
               </Row>
             </Form>
-          </Card>
-          <Card title="成员管理" bordered={false} style={{ marginTop: 24 }}>
+          {/* </Card> */}
+          {/* <Card title="成员管理" bordered={false} style={{ marginTop: 24 }}> */}
             {getFieldDecorator('members', {
               initialValue: tableData,
             })(<TableForm />)}
-          </Card>
+          {/* </Card> */}
           <Button type="primary" style={{ float: "right", marginTop: 20 }} onClick={this.validate}>
             提交
           </Button>
