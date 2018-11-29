@@ -46,17 +46,17 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        include: [
-          path.resolve(__dirname, 'src'),
-          // issues: [Symlinks in project - loader not working when using include](https://github.com/webpack/webpack/issues/1643)
-          fs.realpathSync(__dirname + '/node_modules/ppfish') // 指定使用awesome-typescript-loader编译ppfish源码
-        ],
-        use: [{
-          loader: 'awesome-typescript-loader'
-        }]
-      },
+      // {
+      //   test: /\.tsx?$/,
+      //   include: [
+      //     path.resolve(__dirname, 'src'),
+      //     // issues: [Symlinks in project - loader not working when using include](https://github.com/webpack/webpack/issues/1643)
+      //     fs.realpathSync(__dirname + '/node_modules/ppfish') // 指定使用awesome-typescript-loader编译ppfish源码
+      //   ],
+      //   use: [{
+      //     loader: 'awesome-typescript-loader'
+      //   }]
+      // },
       {
         test: /\.jsx?$/,
         include: [
