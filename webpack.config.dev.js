@@ -13,7 +13,7 @@ module.exports = {
     entry: Object.assign({},
         {
             src: [
-                'webpack-dev-server/client?http://localhost:5000',
+                'webpack-dev-server/client?http://localhost:5566',
                 'webpack/hot/only-dev-server',
                 'react-hot-loader/patch',
                 './src/index'

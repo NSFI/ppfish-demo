@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('../webpack.config.dev');
 const reportURL = require('report-url');
-const PORT = 5000;
+const PORT = 5566;
 const bundler = webpack(webpackConfig);
 reportURL({
     tip: '可用的内网网址',
