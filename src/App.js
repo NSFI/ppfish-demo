@@ -112,31 +112,23 @@ class App extends Component {
           >
             <Menu.Item key="homePage-home">
               <Icon type="home-line" />
-              <span>
                 <Link to="/homePage/home"> {
                   !collapsed ? '首页' : null
                 }</Link>
-              </span>
             </Menu.Item>
-            <SubMenu key="formPage" title={<span><Icon type="demo-file" />
+            <SubMenu key="formPage" title={<span><Icon type="file-line" />
               {
                 !collapsed ? '表单页' : null
               }
             </span>}>
               <Menu.Item key="formPage-basic">
-                <span>
                   <Link to="/formPage/basic">基础表单</Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="formPage-advanced">
-                <span>
                   <Link to="/formPage/advanced">高级表单</Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="formPage-step">
-                <span>
                   <Link to="/formPage/step/step1">分布表单</Link>
-                </span>
               </Menu.Item>
             </SubMenu>
             <SubMenu key="listPage" title={<span><Icon type="richeditor-list" />
@@ -145,21 +137,15 @@ class App extends Component {
               }
             </span>}>
               <Menu.Item key="listPage-basic">
-                <span>
                   <Link to="/listPage/basic">
                     基础列表
                   </Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="listPage-search">
-                <span>
                   <Link to="/listPage/search">搜索列表</Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="listPage-table">
-                <span>
                   <Link to="/listPage/table">表格列表</Link>
-                </span>
               </Menu.Item>
             </SubMenu>
             <SubMenu key="detailPage" title={<span><Icon type="file-line" />
@@ -168,14 +154,10 @@ class App extends Component {
               }
             </span>}>
               <Menu.Item key="detailPage-basic">
-                <span>
                   <Link to="/detailPage/basic">基础详情</Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="detailPage-advanced">
-                <span>
                   <Link to="/detailPage/advanced">高级详情</Link>
-                </span>
               </Menu.Item>
             </SubMenu>
             <SubMenu key="settingPage" title={<span><Icon type="file-line" />
@@ -184,14 +166,10 @@ class App extends Component {
               }
             </span>}>
               <Menu.Item key="settingPage-center">
-                <span>
                   <Link to="/settingPage/center">个人中心</Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="settingPage-settings">
-                <span>
                   <Link to="/settingPage/settings/basic">个人设置</Link>
-                </span>
               </Menu.Item>
             </SubMenu>
             <SubMenu key="resultPage" title={<span><Icon type="file-line" />
@@ -200,14 +178,10 @@ class App extends Component {
               }
             </span>}>
               <Menu.Item key="resultPage-success">
-                <span>
                   <Link to="/resultPage/success">成功页</Link>
-                </span>
               </Menu.Item>
               <Menu.Item key="resultPage-fail">
-                <span>
                   <Link to="/resultPage/fail">失败页</Link>
-                </span>
               </Menu.Item>
             </SubMenu>
           </Menu>
