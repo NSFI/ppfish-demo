@@ -124,10 +124,7 @@ class App extends Component {
             {...defaultPros}
           >
             <Menu.Item key="homePage-home">
-              <Icon type="home-line" />
-                <Link to="/homePage/home"> {
-                  !collapsed ? '首页' : null
-                }</Link>
+              <Link to="/homePage/home"><Icon type="home-line" /><span>首页</span></Link>
             </Menu.Item>
             <SubMenu key="formPage" title={<span><Icon type="file-line" />
               {
