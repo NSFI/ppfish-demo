@@ -12,7 +12,7 @@
   display: inline-block;
   height: 30px;
   width: 30px;
-  margin-left: 30px;
+  margin-left: 18px;
   margin-top: 15px;
   background-size: 30px;
   background-repeat: no-repeat;
@@ -75,9 +75,9 @@
 .demo-menu .fishd-menu-item-selected > span > a {
   color: #fff!important;
 }
-.demo-menu a {
+/* .demo-menu a {
   color: #fff!important;
-}
+} */
 .demo-menu .fishd-menu-item > span > a {
   display: inline-block;
   width: 100%;
