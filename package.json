@@ -57,6 +57,8 @@
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "chalk": "^2.4.1",
     "css-loader": "^1.0.0",
+    "d3": "^5.5.0",
+    "d3-cloud": "^1.2.5",
     "dom-scroll-into-view": "^1.2.1",
     "ejs-loader": "^0.3.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -74,8 +76,6 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.20.2",
-    "webpack-dev-server": "^3.1.9",
-    "d3": "^5.5.0",
-    "d3-cloud": "^1.2.5"
+    "webpack-dev-server": "^3.1.9"
   }
 }
