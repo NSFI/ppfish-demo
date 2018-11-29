@@ -44,7 +44,6 @@ class Dashboard extends Component {
     const chart8 = this.chart8.getInstance();
     const chart9 = this.chart9.getInstance();
     const chart10 = this.chart10.getInstance();
-
     setTimeout(() => {
       chart1.resize();
       chart2.resize();
@@ -60,22 +59,6 @@ class Dashboard extends Component {
   }
   callback = (key) => {
     console.log(key);
-  }
-
-  onChange = (checkedList) => {
-    this.setState({
-      checkedList,
-      indeterminate: !!checkedList.length && (checkedList.length < this.state.plainOptions.length),
-      checkAll: checkedList.length === this.state.plainOptions.length,
-    });
-  };
-
-  onCheckAllChange = (e) => {
-    this.setState({
-      checkedList: e.target.checked ? this.state.plainOptions : [],
-      indeterminate: false,
-      checkAll: e.target.checked,
-    });
   }
 
   render() {

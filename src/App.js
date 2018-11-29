@@ -24,12 +24,25 @@ class App extends Component {
     notification.open({
       message: '想快速上手，去看文档吧',
       description: <p>点击<a href="https://nsfi.github.io/ppfish-components/#/components/spin">Fish Design 文档</a>快速查看</p>,
-    });
+    })
+   
   }
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
     });
+    setTimeout(()=>{
+      // this.dashNode.chart1.chart.getInstance();
+      // this.dashNode.chart2.chart.getInstance();
+      // this.dashNode.chart3.chart.getInstance();
+      this.dashNode.chart4.chart.getInstance();
+      this.dashNode.chart5.chart.getInstance();
+      this.dashNode.chart6.chart.getInstance();
+      // this.dashNode.chart7.getInstance();
+      // this.dashNode.chart8.getInstance();
+      // this.dashNode.chart9.getInstance();
+      // this.dashNode.chart10.getInstance();
+    })
   }
   setDefault = () => {
     const { pathname } = this.props.location;
@@ -235,7 +248,7 @@ class App extends Component {
             </Row>
           </Header>
           <Content style={{ margin: '24px 16px', background: '#fff', minHeight: 280}}>
-              <Route exact path="/homePage/home" component={Dashboard} />
+              <Route exact path="/homePage/home" render={props=><Dashboard ref={node => this.dashNode = node} />} />
               <FormPage />
               <ListPage />
               <DetailPage />
