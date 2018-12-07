@@ -27,14 +27,19 @@ class App extends Component {
     })
    
   }
+  componentDidMount(){
+    // this.dashNode.chart1.chart.getInstance().resize();
+    // this.dashNode.chart2.chart.getInstance().resize();
+    // this.dashNode.chart3.chart.getInstance().resize();
+  }
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
     });
-    setTimeout(()=>{
-      // this.dashNode.chart1.chart.getInstance();
-      // this.dashNode.chart2.chart.getInstance();
-      // this.dashNode.chart3.chart.getInstance();
+    
+      // this.dashNode.chart1.chart.getInstance().resize();
+      // this.dashNode.chart2.chart.getInstance().resize();
+      // this.dashNode.chart3.chart.getInstance().resize();
       this.dashNode.chart4.chart.getInstance();
       this.dashNode.chart5.chart.getInstance();
       this.dashNode.chart6.chart.getInstance();
@@ -42,7 +47,7 @@ class App extends Component {
       // this.dashNode.chart8.getInstance();
       // this.dashNode.chart9.getInstance();
       // this.dashNode.chart10.getInstance();
-    })
+   
   }
   setDefault = () => {
     const { pathname } = this.props.location;
