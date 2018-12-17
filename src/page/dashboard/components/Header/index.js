@@ -84,7 +84,7 @@ class Header extends Component {
           <div className="u-statistical" >
             <div>
               <div className="u-description">
-                访问量 <Trend flag="up" reverseColor={true} >12%</Trend>
+                访问量 <Trend flag="up" reverseColor={true} value={'5%'} >12%</Trend>
               </div>
               <div className="u-number">
                 25,992
@@ -92,7 +92,7 @@ class Header extends Component {
             </div>
             <div>
               <div className="u-description">
-                下载数 <Trend flag="down" reverseColor={true} style={{ marginLeft: 8 }}>11%</Trend>
+                下载数 <Trend flag="down" reverseColor={true} style={{ marginLeft: 8 }} value={'0.05%'}>11%</Trend>
               </div>
               <div className="u-number">
                 13,679

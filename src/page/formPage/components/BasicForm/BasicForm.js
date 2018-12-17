@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Select, AutoComplete, Input, Icon, Col, Cascader, Button, Row, Checkbox, DatePicker, TimePicker, Slider, Radio ,Upload} from 'ppfish';
+import { Form, Select, AutoComplete, Input, Icon, Col, Cascader, Button, Row, Checkbox, DatePicker, TimePicker, Slider, Radio ,Upload,InputNumber} from 'ppfish';
 import './BasicForm.less';
 const RangePicker = DatePicker.DateRangePicker;
 const FormItem = Form.Item;
@@ -189,6 +189,14 @@ class App extends Component {
                 >
                   {getFieldDecorator('time-picker', config)(
                     <TimePicker />
+                  )}
+                </FormItem>
+                <FormItem
+                  {...formItemLayout}
+                  label="InputNumber"
+                >
+                  {getFieldDecorator('input-number')(
+                    <InputNumber min={1} max={10}/>
                   )}
                 </FormItem>
                 <FormItem

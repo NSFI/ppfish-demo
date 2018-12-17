@@ -228,11 +228,9 @@ class App extends Component {
                     </Col>
                     <Col span={8}>
                       <Popover content={content}>
-                        <a className="fishd-dropdown-link">
                           <Badge count={5}>
-                            <Icon type="demo-phone" style={{ cursor: 'pointer', fontSize: 20 }} />
+                            <Icon type="tip" style={{ cursor: 'pointer', fontSize: 20 }} />
                           </Badge>
-                        </a>
                       </Popover>
                     </Col>
                     <Col span={8}>

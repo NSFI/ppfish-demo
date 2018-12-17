@@ -1,5 +1,5 @@
 import React, { Component ,Fragment} from 'react';
-import { Drawer, Tree, Select, Divider, Row, Col, Switch } from 'ppfish';
+import { Drawer, Tree, Select, Divider, Row, Col, Switch,ColorPicker } from 'ppfish';
 class DrawerPage extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,9 @@ class DrawerPage extends Component {
       open: !this.state.open,
     });
   }
+  onChangeColor = (color) => {
+    console.log(color)
+  }
   render() {
     return (
       <Fragment >
@@ -37,20 +40,17 @@ class DrawerPage extends Component {
             <div style={{ width: 300, padding: 20 }}>
               <h3>主题色</h3>
               <Row type="flex" justify="space-around">
-                <Col span={4}>
-                  <div style={{ width: 20, height: 20, backgroundColor: '#F24957', borderRadius: 2 }}></div>
+                <Col span={6}>
+                  <ColorPicker onChange={this.onChangeColor} className="demo-color-picker" defaultColor="red"/>
                 </Col>
-                <Col span={4}>
-                  <div style={{ width: 20, height: 20, backgroundColor: '#26BD71', borderRadius: 2 }}></div>
+                <Col span={6}>
+                  <ColorPicker onChange={this.onChangeColor} className="demo-color-picker" defaultColor="green"/>
                 </Col>
-                <Col span={4}>
-                  <div style={{ width: 20, height: 20, backgroundColor: '#FFAF0F', borderRadius: 2 }}></div>
+                <Col span={6}>
+                  <ColorPicker onChange={this.onChangeColor} className="demo-color-picker" defaultColor="#ccc"/>
                 </Col>
-                <Col span={4}>
-                  <div style={{ width: 20, height: 20, backgroundColor: '#8875FF', borderRadius: 2 }}></div>
-                </Col>
-                <Col span={4}>
-                  <div style={{ width: 20, height: 20, backgroundColor: '#337EFF', borderRadius: 2 }}></div>
+                <Col span={6}>
+                  <ColorPicker onChange={this.onChangeColor} className="demo-color-picker"/>
                 </Col>
               </Row>
               <Divider />

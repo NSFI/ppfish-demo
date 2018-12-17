@@ -34,28 +34,28 @@ class Dashboard extends Component {
     };
   }
   componentDidMount() {
-    const chart1 = this.chart1.chart.getInstance();
-    const chart2 = this.chart2.chart.getInstance();
-    const chart3 = this.chart3.chart.getInstance();
-    const chart4 = this.chart4.chart.getInstance();
-    const chart5 = this.chart5.chart.getInstance();
-    const chart6 = this.chart6.chart.getInstance();
-    const chart7 = this.chart7.getInstance();
-    const chart8 = this.chart8.getInstance();
-    const chart9 = this.chart9.getInstance();
-    const chart10 = this.chart10.getInstance();
-    setTimeout(() => {
-      chart1.resize();
-      chart2.resize();
-      chart3.resize();
-      chart4.resize();
-      chart5.resize();
-      chart6.resize();
-      chart7.resize();
-      chart8.resize();
-      chart9.resize();
-      chart10.resize();
-    })
+    // const chart1 = this.chart1.chart.getInstance();
+    // const chart2 = this.chart2.chart.getInstance();
+    // const chart3 = this.chart3.chart.getInstance();
+    // const chart4 = this.chart4.chart.getInstance();
+    // const chart5 = this.chart5.chart.getInstance();
+    // const chart6 = this.chart6.chart.getInstance();
+    // const chart7 = this.chart7.getInstance();
+    // const chart8 = this.chart8.getInstance();
+    // const chart9 = this.chart9.getInstance();
+    // const chart10 = this.chart10.getInstance();
+    // setTimeout(() => {
+    //   chart1.resize();
+    //   chart2.resize();
+    //   chart3.resize();
+    //   chart4.resize();
+    //   chart5.resize();
+    //   chart6.resize();
+    //   chart7.resize();
+    //   chart8.resize();
+    //   chart9.resize();
+    //   chart10.resize();
+    // })
   }
   callback = (key) => {
     console.log(key);
@@ -389,30 +389,22 @@ class Dashboard extends Component {
             <Header />
             <Row gutter={24} style={{ marginBottom: 16 }}>
               <Col span={8} >
-                {/* <Card title={'访问年龄'} className="car-box-shadow" style={{ minWidth: 280 }}> */}
                 <AgeChart data={age} seriesName={"年龄"} style={style} ref={node => this.chart1 = node} />
-                {/* </Card> */}
               </Col>
               <Col span={8} >
-                {/* <Card title={'访问性别'} className="car-box-shadow" style={{ minWidth: 280 }}> */}
                 <SexChart ref={node => this.chart2 = node} data={gender.filter(item => item.text === '男').concat(gender.filter(item => item.text === '女')).concat(gender.filter(item => item.text === '未知'))} style={style} />
-                {/* </Card> */}
               </Col>
               <Col span={8} >
-                {/* <Card title={'访问职业'} className="car-box-shadow" style={{ minWidth: 280 }}> */}
                 <PictorialChart ref={node => this.chart3 = node} data={career} style={style} />
-                {/* </Card> */}
               </Col>
             </Row>
             <Row gutter={24} style={{ marginBottom: 16 }}>
               <Col span={14}>
-                {/* <Card title={'走马灯'} style={{ marginTop: 20 }} className="car-box-shadow"> */}
                 <Carousel autoplay>
                   <div><RegionChart ref={node => this.chart4 = node} data={region} style={{ width: '100%', height: '280px' }} /></div>
                   <div><PictorialChart ref={node => this.chart5 = node} data={career} style={{ width: '100%', height: '280px' }} /></div>
                   <div><RegionChart ref={node => this.chart6 = node} data={wealth} style={{ width: '100%', height: '280px' }} /></div>
                 </Carousel>
-                {/* </Card> */}
               </Col>
               <Col span={10} >
                 <div style={{height:'280px',backgroundColor:'#fff',padding:20}}>
@@ -462,7 +454,6 @@ class Dashboard extends Component {
                 />
               </Content>
               <Sider width={400} style={{ background: '#fff', marginLeft: 20 ,padding:20}}>
-                {/* <Card title="时间线"> */}
                 <Timeline>
                   <Timeline.Item color="green">1.3.0</Timeline.Item>
                   <Timeline.Item color="green">2018-08-01</Timeline.Item>
@@ -476,7 +467,6 @@ class Dashboard extends Component {
                     <p>发布了时间选择框、日期选择框、图片查看器、富文本编辑器、列表、全局提示框、开关、输入框、面包屑、表单、布局、上传、级联选择、进度条、抽屉、折叠面板、步骤条、徽标、树形控件 这些组件。</p>
                   </Timeline.Item>
                 </Timeline>
-                {/* </Card> */}
               </Sider>
             </Layout>
           </Content>
